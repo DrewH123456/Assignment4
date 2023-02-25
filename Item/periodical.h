@@ -8,25 +8,24 @@
 #define PERIODICAL_H
 
 #include "book.h"
+#include "item.h"
 
 class Periodical : public Book
 {
-private:
+protected:
+    int year;
+    int month;
+    string title;
+
 public:
-    // Constructor
-    Periodical();
+    // Constructor, setting corresponding data members
+    Periodical(string title, int month, int year);
 
-    // Constructor, setting corresponding data member
-    Periodical(const string &author, const string &title, int year,
-               int available)
-
-        // Destructor
-        virtual ~Periodical()
-    {
-    }
+    // Destructor
+    virtual ~Periodical();
 
     // Counts available copies
-    int countAvailable const();
+    int countAvailable() const;
 
     // Checks checked out count for given book
     int countCheckedOut() const;
@@ -38,12 +37,12 @@ public:
     void returnBook();
 
     // Overloaded comparison operators
-    bool operator<(const Periodical &other) const;
-    bool operator>(const Periodical &other) const;
-    bool operator>=(const Periodical &other) const;
-    bool operator>=(const Periodical &other) const;
-    bool operator==(const Periodical &other) const;
-    bool operator!=(const Periodical &other) const;
+    bool operator<(const Item &other) const;
+    bool operator>(const Item &other) const;
+    bool operator>=(const Item &other) const;
+    bool operator>=(const Item &other) const;
+    bool operator==(const Item &other) const;
+    bool operator!=(const Item &other) const;
 };
 
 #endif

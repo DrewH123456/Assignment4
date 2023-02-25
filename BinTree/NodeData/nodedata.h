@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "book.h"
+
 using namespace std;
 
 // simple class containing one string to use for testing
@@ -32,7 +34,7 @@ public:
     bool operator>=(const NodeData &) const;
 
 private:
-    string data;
+    Book *data;
 };
 
 #endif

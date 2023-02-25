@@ -8,11 +8,12 @@
 #define BOOKCONTAINER_H
 
 #include "bintree.h"
+#include <unordered_map>
 
 class BookContainer
 {
 private:
-    map<char, BinTree *> bookTrees; // stores bintrees of different books
+    unordered_map<char, BinTree *> bookTrees; // stores bintrees of different books
 
 public:
     // Constructor

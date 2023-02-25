@@ -8,6 +8,9 @@
 #define BOOKFACTORY_H
 
 #include "book.h"
+#include "childrenbook.h"
+#include "fiction.h"
+#include "periodical.h"
 
 class BookFactory
 {

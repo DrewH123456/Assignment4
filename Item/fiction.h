@@ -6,24 +6,26 @@
 
 #ifndef CHILDRENBOOK_H
 #define CHILDRENBOOK_H
+
 #include "book.h"
+#include "item.h"
 
 class Fiction : public Book
 {
-private:
-public:
-    // Constructor
-    Fiction();
+protected:
+    string authorName;
+    string title;
+    int year;
 
-    // Constructor, setting corresponding data member
-    Fiction(const string &author, const string &title, int year,
-            int available);
+public:
+    // Constructor, setting corresponding data members
+    Fiction(string author, string title, int year);
 
     // Destructor
     virtual ~Fiction();
 
     // Counts available copies
-    int countAvailable const();
+    int countAvailable() const;
 
     // Checks checked out count for given book
     int countCheckedOut() const;
@@ -35,12 +37,12 @@ public:
     void returnBook();
 
     // Overloaded comparison operators
-    bool operator<(const Fiction &other) const;
-    bool operator>(const Fiction &other) const;
-    bool operator>=(const Fiction &other) const;
-    bool operator>=(const Fiction &other) const;
-    bool operator==(const Fiction &other) const;
-    bool operator!=(const Fiction &other) const;
+    bool operator<(const Item &other) const;
+    bool operator>(const Item &other) const;
+    bool operator>=(const Item &other) const;
+    bool operator>=(const Item &other) const;
+    bool operator==(const Item &other) const;
+    bool operator!=(const Item &other) const;
 };
 
 #endif
