@@ -40,3 +40,8 @@ int ItemFactory::hash(char ch) const
 {
     return 5;
 }
+
+int ItemFactory::hash(char ch) const
+{
+    return ch - 'A';
+}
