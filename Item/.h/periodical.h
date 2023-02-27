@@ -18,6 +18,9 @@ protected:
     string title;
 
 public:
+    // Constructor
+    Periodical();
+
     // Constructor, setting corresponding data members
     Periodical(string title, int month, int year);
 
@@ -36,11 +39,16 @@ public:
     // Returns this book for a given user in a given library
     void returnBook();
 
+    // Allows item factory to create a periodical object
+
+    // Overloaded output operator
+    virtual ostream &operator<<(ostream &output, const Item &item) const;
+
     // Overloaded comparison operators
     bool operator<(const Item &other) const;
     bool operator>(const Item &other) const;
     bool operator>=(const Item &other) const;
-    bool operator>=(const Item &other) const;
+    bool operator<=(const Item &other) const;
     bool operator==(const Item &other) const;
     bool operator!=(const Item &other) const;
 };

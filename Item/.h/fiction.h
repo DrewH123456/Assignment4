@@ -1,8 +1,7 @@
 /*
- * The ChildrenBook class represents a periodical item in the library system.
+ * The Fiction class represents a periodical item in the library system.
  * It inherits from the Book class and includes additional data members specific
  * to periodicals, such as the date issues and title.
- *
  */
 
 #ifndef CHILDRENBOOK_H
@@ -10,22 +9,25 @@
 
 #include "book.h"
 #include "item.h"
+#include <string>
+using namespace std;
 
-class ChildrenBook : public Book
+class Fiction : public Book
 {
-    // friend ostream &operator<<(ostream &output, const ChildrenBook c);
-
 protected:
     string authorName;
     string title;
     int year;
 
 public:
+    // Constructor
+    Fiction();
+
     // Constructor, setting corresponding data members
-    ChildrenBook(string author, string title, int year);
+    Fiction(string author, string title, int year);
 
     // Destructor
-    virtual ~ChildrenBook();
+    virtual ~Fiction();
 
     // Counts available copies
     int countAvailable() const;
@@ -39,12 +41,14 @@ public:
     // Returns this book for a given user in a given library
     void returnBook();
 
+    // Overloaded output operator
+    virtual ostream &operator<<(ostream &output, const Item &item) const;
+
     // Overloaded comparison operators
-    // pointer or object???
     bool operator<(const Item &other) const;
     bool operator>(const Item &other) const;
     bool operator>=(const Item &other) const;
-    bool operator>=(const Item &other) const;
+    bool operator<=(const Item &other) const;
     bool operator==(const Item &other) const;
     bool operator!=(const Item &other) const;
 };

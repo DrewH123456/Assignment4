@@ -7,7 +7,6 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include <string>
 #include <vector>
 #include "patron.h"
 using namespace std;
@@ -15,9 +14,8 @@ using namespace std;
 class Item
 {
 protected:
-    vector<Patron *> users;
-    int available;
-    int checkedOut;
+    int available;  // available item count
+    int checkedOut; // checked out item count
 
 public:
     // constructor, setting corresponding data members
@@ -38,12 +36,16 @@ public:
     // Returns this item for a given user
     virtual void returnItem() = 0;
 
+    virtual Item *create() const = 0;
+
+    // Overloaded output operator
+    virtual ostream &operator<<(ostream &output, const Item &item) const = 0;
+
     // Overloaded comparison operators
-    // pointer or object???
     virtual bool operator<(const Item &other) const = 0;
     virtual bool operator>(const Item &other) const = 0;
     virtual bool operator>=(const Item &other) const = 0;
-    virtual bool operator>=(const Item &other) const = 0;
+    virtual bool operator<=(const Item &other) const = 0;
     virtual bool operator==(const Item &other) const = 0;
     virtual bool operator!=(const Item &other) const = 0;
 };

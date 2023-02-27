@@ -9,8 +9,6 @@
 #ifndef BOOK_H
 #define BOOK_H
 
-#include <string>
-#include <vector>
 #include "patron.h"
 using namespace std;
 

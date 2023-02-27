@@ -1,6 +1,6 @@
 /*
- * This is a factory for class Book
- * The factory will produce different children objects of Book for the library
+ * This is a factory for class Item
+ * The factory will produce different children objects of Item for the library
  * to create
  */
 
@@ -12,7 +12,7 @@
 #include "fiction.h"
 #include "periodical.h"
 
-class BookFactory
+class ItemFactory
 {
 private:
     Book *objFactory[10];    // contains array of each object
@@ -20,10 +20,10 @@ private:
 
 public:
     // Factory constructor, initializes objFactory
-    BookFactory();
+    ItemFactory();
 
     // Factory destructor, deletes objFactory
-    ~BookFactory();
+    ~ItemFactory();
 
     // Creates a corresponding action based on the information provided
     Book *createIt(char c) const;
