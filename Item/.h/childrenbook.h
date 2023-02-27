@@ -37,10 +37,13 @@ public:
     void checkOut();
 
     // Returns this book for a given user in a given library
-    void returnBook();
+    void returnItem();
+
+    // Allows item factory to create a children book object
+    virtual Item *create() const;
 
     // Overloaded output operator
-    virtual ostream &operator<<(ostream &output, const Item &item) const;
+    // virtual ostream &operator<<(ostream &output, const Item &item) const;
 
     // Overloaded comparison operators
     bool operator<(const Item &other) const;

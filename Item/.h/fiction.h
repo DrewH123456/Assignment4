@@ -4,8 +4,8 @@
  * to periodicals, such as the date issues and title.
  */
 
-#ifndef CHILDRENBOOK_H
-#define CHILDRENBOOK_H
+#ifndef FICTION_H
+#define FICTION_H
 
 #include "book.h"
 #include "item.h"
@@ -39,10 +39,13 @@ public:
     void checkOut();
 
     // Returns this book for a given user in a given library
-    void returnBook();
+    void returnItem();
+
+    // Allows item factory to create a fiction object
+    virtual Item *create() const;
 
     // Overloaded output operator
-    virtual ostream &operator<<(ostream &output, const Item &item) const;
+    // virtual ostream &operator<<(ostream &output, const Item &item) const;
 
     // Overloaded comparison operators
     bool operator<(const Item &other) const;

@@ -4,7 +4,7 @@
  * to periodicals, such as the date issues and title.
  */
 
-#include <fiction.h>
+#include "fiction.h"
 #include "book.h"
 #include "item.h"
 #include <string>
@@ -56,10 +56,18 @@ void Fiction::checkOut()
 //---------------------------------------------------------------------------
 // returnBook
 // Returns this book for a given user in a given library
-void Fiction::returnBook()
+void Fiction::returnItem()
 {
     available++;
     checkedOut--;
+}
+
+//---------------------------------------------------------------------------
+// create
+// Allows item factory to create a fiction object
+Item *Fiction::create() const
+{
+    return new Fiction();
 }
 
 //---------------------------------------------------------------------------

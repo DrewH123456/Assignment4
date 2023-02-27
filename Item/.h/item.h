@@ -36,10 +36,11 @@ public:
     // Returns this item for a given user
     virtual void returnItem() = 0;
 
+    // Allows item factory to create an item
     virtual Item *create() const = 0;
 
     // Overloaded output operator
-    virtual ostream &operator<<(ostream &output, const Item &item) const = 0;
+    // virtual ostream &operator<<(ostream &output, const Item &item) const = 0;
 
     // Overloaded comparison operators
     virtual bool operator<(const Item &other) const = 0;

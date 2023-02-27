@@ -58,14 +58,29 @@ void Periodical::checkOut()
 //---------------------------------------------------------------------------
 // returnBook
 // Returns this book for a given user in a given library
-void Periodical::returnBook()
+void Periodical::returnItem()
 {
     available++;
     checkedOut--;
 }
 
 //---------------------------------------------------------------------------
-// operator
+// create
+// Allows item factory to create a periodical object
+Item *Periodical::create() const
+{
+    return new Periodical();
+}
+
+//---------------------------------------------------------------------------
+// operator<<
+// Overloaded output operator
+// virtual ostream &operator<<(ostream &output, const Item &item) const
+// {
+// }
+
+//---------------------------------------------------------------------------
+// operators
 // Overloaded comparison operators
 bool Periodical::operator==(const Item &other) const
 {

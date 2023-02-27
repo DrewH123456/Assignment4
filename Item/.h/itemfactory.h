@@ -26,7 +26,7 @@ public:
     ~ItemFactory();
 
     // Creates a corresponding action based on the information provided
-    Book *createIt(char c) const;
+    Item *createIt(char c) const;
 };
 
 #endif

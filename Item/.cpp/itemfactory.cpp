@@ -8,3 +8,35 @@
 #include "childrenbook.h"
 #include "fiction.h"
 #include "periodical.h"
+
+ItemFactory::ItemFactory()
+{
+    objFactory[0] = new ChildrenBook();
+    objFactory[1] = new Fiction();
+    objFactory[2] = new Periodical();
+    for (int i = 3; i < 10; i++)
+    {
+        objFactory[i] = NULL;
+    }
+}
+ItemFactory::~ItemFactory()
+{
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            delete objFactory[i];
+            objFactory[i] = NULL;
+        }
+    }
+}
+
+Item *ItemFactory::createIt(char ch) const
+{
+    int subscript = hash(ch); // would do error checking
+    return objFactory[subscript]->create();
+}
+
+int ItemFactory::hash(char ch) const
+{
+    return 5;
+}

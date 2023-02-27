@@ -4,7 +4,7 @@
  * to children books, such as author and title
  */
 
-#include <childrenbook.h>
+#include "childrenbook.h"
 #include "book.h"
 #include "item.h"
 #include <string>
@@ -58,10 +58,18 @@ void ChildrenBook::checkOut()
 //---------------------------------------------------------------------------
 // returnBook
 // Returns this book for a given user in a given library
-void ChildrenBook::returnBook()
+void ChildrenBook::returnItem()
 {
     available++;
     checkedOut--;
+}
+
+//---------------------------------------------------------------------------
+// create
+// Allows item factory to create a children book object
+Item *ChildrenBook::create() const
+{
+    return new ChildrenBook();
 }
 
 //---------------------------------------------------------------------------
