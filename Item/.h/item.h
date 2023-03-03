@@ -7,8 +7,6 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include <vector>
-#include "patron.h"
 using namespace std;
 
 class Item

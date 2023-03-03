@@ -8,7 +8,6 @@
 #define FICTION_H
 
 #include "book.h"
-#include "item.h"
 #include <string>
 using namespace std;
 
@@ -22,9 +21,6 @@ protected:
 public:
     // Constructor
     Fiction();
-
-    // Constructor, setting corresponding data members
-    Fiction(string author, string title, int year);
 
     // Destructor
     virtual ~Fiction();

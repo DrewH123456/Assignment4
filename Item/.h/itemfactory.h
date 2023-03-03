@@ -7,15 +7,12 @@
 #ifndef BOOKFACTORY_H
 #define BOOKFACTORY_H
 
-#include "book.h"
-#include "childrenbook.h"
-#include "fiction.h"
-#include "periodical.h"
+class Item;
 
 class ItemFactory
 {
 private:
-    Book *objFactory[10];    // contains array of each object
+    Item *objFactory[10];    // contains array of each object
     int hash(char ch) const; // hash function
 
 public:

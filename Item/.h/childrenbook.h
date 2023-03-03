@@ -8,7 +8,6 @@
 #define CHILDRENBOOK_H
 
 #include "book.h"
-#include "item.h"
 
 class ChildrenBook : public Book
 {
@@ -20,9 +19,6 @@ protected:
 public:
     // Constructor
     ChildrenBook();
-
-    // Constructor, setting corresponding data members
-    ChildrenBook(string author, string title, int year);
 
     // Destructor
     virtual ~ChildrenBook();

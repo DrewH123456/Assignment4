@@ -14,17 +14,6 @@ using namespace std;
 // ChildrenBook
 // Constructor
 ChildrenBook::ChildrenBook()
-    : Book()
-{
-    available = 5;
-    checkedOut = 0;
-}
-
-//---------------------------------------------------------------------------
-// ChildrenBook
-// Constructor, setting corresponding data members
-ChildrenBook::ChildrenBook(string author, string title, int year)
-    : Book(), authorName(author), title(title), year(year)
 {
     available = 5;
     checkedOut = 0;

@@ -9,16 +9,13 @@
 #ifndef BOOK_H
 #define BOOK_H
 
-#include "patron.h"
+#include "item.h"
 using namespace std;
 
 class Book : public Item
 {
 
 public:
-    // constructor, setting corresponding data members
-    Book();
-
     // Destructor
     virtual ~Book();
 };

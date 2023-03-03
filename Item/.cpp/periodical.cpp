@@ -14,17 +14,6 @@ using namespace std;
 // Periodical
 // Constructor
 Periodical::Periodical()
-    : Book()
-{
-    available = 5;
-    checkedOut = 0;
-}
-
-//---------------------------------------------------------------------------
-// Periodical
-// Constructor, setting corresponding data members
-Periodical::Periodical(string title, int month, int year)
-    : Book(), title(title), month(month), year(year)
 {
     available = 5;
     checkedOut = 0;

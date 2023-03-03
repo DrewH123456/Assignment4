@@ -8,7 +8,6 @@
 #define PERIODICAL_H
 
 #include "book.h"
-#include "item.h"
 
 class Periodical : public Book
 {

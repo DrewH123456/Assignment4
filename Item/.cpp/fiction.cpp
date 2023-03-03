@@ -13,7 +13,7 @@ using namespace std;
 //---------------------------------------------------------------------------
 // Fiction
 // Constructor
-Fiction::Fiction() : Book()
+Fiction::Fiction()
 {
     available = 5;
     checkedOut = 0;

@@ -10,7 +10,7 @@
 
 #include "actionfactory.h"
 #include "usercontainer.h"
-#include "bookfactory.h"
+#include "itemfactory.h"
 #include "bookcontainer.h"
 #include "patron.h"
 #include "book.h"
@@ -20,7 +20,7 @@ class Library
 private:
     // Factories
     ActionFactory *af;
-    BookFactory *bf;
+    ItemFactory *bf;
 
     // Containers
     UserContainer *uc;
@@ -35,7 +35,7 @@ public:
 
     // processes text files
     void readUsers();
-    void readBooks();
+    void readItems();
     void readActions();
 
     // retrieves patron based on id
