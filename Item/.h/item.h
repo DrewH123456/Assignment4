@@ -39,6 +39,8 @@ public:
 
     virtual void setData(ifstream &inputFile) = 0;
 
+    virtual void print(ostream &out) const = 0;
+
     // Overloaded output operator
     // virtual ostream &operator<<(ostream &output, const Item &item) const = 0;
 

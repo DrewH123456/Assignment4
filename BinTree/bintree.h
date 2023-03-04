@@ -59,7 +59,7 @@ public:
     // turn array to bstree
     void arrayToBSTree(NodeData *[]);
     // print bstree
-    void printBSTree();
+    void printBSTree() const;
 
 private:
     struct Node
@@ -71,6 +71,8 @@ private:
     Node *root; // root of the tree
 
     // utility functions
+    // printBSTree helper
+    void printBSTreeHelper(Node *current) const;
     // void inorderHelper(Node *) const; // recursive helper for operator<<
     void inorderHelper(Node *) const;
     // helper method for viewing the tree side way

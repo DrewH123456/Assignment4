@@ -8,6 +8,7 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
+#include <string>
 class ItemFactory;
 class ActionFactory;
 class UserContainer;

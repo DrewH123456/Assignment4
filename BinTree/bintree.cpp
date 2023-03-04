@@ -3,6 +3,30 @@
 #include <string>
 
 //----------------------------------------------------------------
+// printBSTree
+// prints out bstree in order
+//----------------------------------------------------------------
+void BinTree::printBSTree() const
+{
+   printBSTreeHelper(root);
+}
+
+//----------------------------------------------------------------
+// printBSTreeHelper
+// helper for printBSTree, recursively prints out tree
+//----------------------------------------------------------------
+void BinTree::printBSTreeHelper(Node *current) const
+{
+   if (current != nullptr)
+   {
+      printBSTreeHelper(current->left);
+      current->data->print(cout);
+      cout << endl;
+      printBSTreeHelper(current->right);
+   }
+}
+
+//----------------------------------------------------------------
 // operator <<
 // print the elements of the tree in in-order traversal.
 //----------------------------------------------------------------

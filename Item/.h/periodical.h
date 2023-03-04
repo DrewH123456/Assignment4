@@ -41,6 +41,8 @@ public:
     // sets item's data using info from line in infile
     virtual void setData(ifstream &inputFile);
 
+    virtual void print(ostream &out) const;
+
     // Overloaded output operator
     // virtual ostream &operator<<(ostream &output, const Item &item) const;
 

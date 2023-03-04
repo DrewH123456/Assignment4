@@ -80,6 +80,10 @@ void ChildrenBook::setData(ifstream &inputFile)
     getline(inputFile, dummy, '\n');
 }
 
+void ChildrenBook::print(ostream &out) const
+{
+}
+
 //---------------------------------------------------------------------------
 // operator
 // Overloaded comparison operators
