@@ -8,6 +8,7 @@
 #include "book.h"
 #include "item.h"
 #include <string>
+#include <fstream>
 using namespace std;
 
 //---------------------------------------------------------------------------
@@ -59,6 +60,24 @@ void ChildrenBook::returnItem()
 Item *ChildrenBook::create() const
 {
     return new ChildrenBook();
+}
+
+//---------------------------------------------------------------------------
+// setData
+// sets item's data using info from line in infile
+void ChildrenBook::setData(ifstream &inputFile)
+{
+    string author;
+    string title;
+    int year;
+    string dummy; // used in final getLine to move inputFile to next line
+
+    inputFile.get();
+    getline(inputFile, author, ',');
+    inputFile.get();
+    getline(inputFile, title, ',');
+    inputFile >> year;
+    getline(inputFile, dummy, '\n');
 }
 
 //---------------------------------------------------------------------------

@@ -8,23 +8,23 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
-#include "actionfactory.h"
-#include "usercontainer.h"
-#include "itemfactory.h"
-#include "bookcontainer.h"
-#include "patron.h"
-#include "book.h"
+class ItemFactory;
+class ActionFactory;
+class UserContainer;
+class ItemContainer;
+class Patron;
+class Book;
 
 class Library
 {
 private:
     // Factories
-    ActionFactory *af;
-    ItemFactory *bf;
+    ActionFactory *actionFac;
+    ItemFactory *itemFac;
 
     // Containers
-    UserContainer *uc;
-    BookContainer *bc;
+    UserContainer *userContain;
+    ItemContainer *ItemContain;
 
 public:
     // Constructor

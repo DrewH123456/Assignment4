@@ -8,6 +8,7 @@
 #include "book.h"
 #include "item.h"
 #include <string>
+#include <fstream>
 using namespace std;
 
 //---------------------------------------------------------------------------
@@ -59,6 +60,23 @@ void Periodical::returnItem()
 Item *Periodical::create() const
 {
     return new Periodical();
+}
+
+//---------------------------------------------------------------------------
+// setData
+// sets item's data using info from line in infile
+void Periodical::setData(ifstream &inputFile)
+{
+    string title;
+    int month;
+    int year;
+    string dummy; // used in final getLine to move inputFile to next line
+
+    inputFile.get();
+    getline(inputFile, title, ',');
+    inputFile >> month;
+    inputFile >> year;
+    getline(inputFile, dummy, '\n');
 }
 
 //---------------------------------------------------------------------------

@@ -6,7 +6,29 @@
  */
 
 #include "library.h"
+#include "itemfactory.h"
+#include "item.h"
+#include "itemcontainer.h"
+#include <istream>
+#include <iostream>
+#include <fstream>
+using namespace std;
 
-void readItems()
+void Library::readItems()
 {
+    string fileName = "data4books.txt";
+    ifstream inputFile(fileName);
+    char itemType;
+    while (true)
+    {
+        inputFile >> itemType;
+        if (inputFile.eof())
+            return;
+        Item *currentItem = itemFac->createIt(itemType);
+        if (currentItem != nullptr)
+        {
+            currentItem->setData(inputFile);
+            ItemContainer->addItem(itemType, currentItem);
+        }
+    }
 }

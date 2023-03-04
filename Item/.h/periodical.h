@@ -20,9 +20,6 @@ public:
     // Constructor
     Periodical();
 
-    // Constructor, setting corresponding data members
-    Periodical(string title, int month, int year);
-
     // Destructor
     virtual ~Periodical();
 
@@ -40,6 +37,9 @@ public:
 
     // Allows item factory to create a periodical object
     virtual Item *create() const;
+
+    // sets item's data using info from line in infile
+    virtual void setData(ifstream &inputFile);
 
     // Overloaded output operator
     // virtual ostream &operator<<(ostream &output, const Item &item) const;

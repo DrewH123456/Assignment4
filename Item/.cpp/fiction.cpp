@@ -8,21 +8,13 @@
 #include "book.h"
 #include "item.h"
 #include <string>
+#include <fstream>
 using namespace std;
 
 //---------------------------------------------------------------------------
 // Fiction
 // Constructor
 Fiction::Fiction()
-{
-    available = 5;
-    checkedOut = 0;
-}
-
-//---------------------------------------------------------------------------
-// Fiction
-// Constructor, setting corresponding data members
-Fiction::Fiction(string author, string title, int year) : Book(), authorName(author), title(title), year(year)
 {
     available = 5;
     checkedOut = 0;
@@ -68,6 +60,24 @@ void Fiction::returnItem()
 Item *Fiction::create() const
 {
     return new Fiction();
+}
+
+//---------------------------------------------------------------------------
+// setData
+// sets item's data using info from line in infile
+void Fiction::setData(ifstream &inputFile)
+{
+    string author;
+    string title;
+    int year;
+    string dummy; // used in final getLine to move inputFile to next line
+
+    inputFile.get();
+    getline(inputFile, author, ',');
+    inputFile.get();
+    getline(inputFile, title, ',');
+    inputFile >> year;
+    getline(inputFile, dummy, '\n');
 }
 
 //---------------------------------------------------------------------------

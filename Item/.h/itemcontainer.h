@@ -4,27 +4,28 @@
  * All of the binary search trees are stored in a map
  */
 
-#ifndef BOOKCONTAINER_H
-#define BOOKCONTAINER_H
+#ifndef ITEMCONTAINER_H
+#define ITEMCONTAINER_H
 
 #include "bintree.h"
 #include <unordered_map>
 
-class BookContainer
+class ItemContainer
 {
 private:
-    unordered_map<char, BinTree *> bookTrees; // stores bintrees of different books
+    unordered_map<char, BinTree *> itemTrees; // stores bintrees of different books
 
 public:
     // Constructor
-    BookContainer();
+    ItemContainer();
 
     // Destructor
-    ~BookContainer();
+    ~ItemContainer();
 
     // inserts a new binTree and associates character with it
-    void addTree(char, BinTree *);
+    void addTree(char);
     void removeTree(char);
+    void addItem(char, Item *);
 };
 
 #endif

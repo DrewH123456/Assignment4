@@ -37,6 +37,8 @@ public:
     // Allows item factory to create an item
     virtual Item *create() const = 0;
 
+    virtual void setData(ifstream &inputFile) = 0;
+
     // Overloaded output operator
     // virtual ostream &operator<<(ostream &output, const Item &item) const = 0;
 

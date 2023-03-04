@@ -40,6 +40,8 @@ public:
     // Allows item factory to create a fiction object
     virtual Item *create() const;
 
+    virtual void setData(ifstream &inputFile);
+
     // Overloaded output operator
     // virtual ostream &operator<<(ostream &output, const Item &item) const;
 
