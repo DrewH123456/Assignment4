@@ -14,11 +14,19 @@
 #include <fstream>
 using namespace std;
 
+Library::Library()
+{
+    ItemContainer *myContainer = new ItemContainer();
+    itemContain = myContainer;
+}
+
 void Library::readItems()
 {
+    // reads in file
     string fileName = "data4books.txt";
     ifstream inputFile(fileName);
     char itemType;
+    // for each line in txt file, call setData
     while (true)
     {
         inputFile >> itemType;
@@ -28,7 +36,11 @@ void Library::readItems()
         if (currentItem != nullptr)
         {
             currentItem->setData(inputFile);
-            ItemContainer->addItem(itemType, currentItem);
+            itemContain->addItem(itemType, currentItem);
         }
     }
+}
+
+void Library::displayBooks() const
+{
 }

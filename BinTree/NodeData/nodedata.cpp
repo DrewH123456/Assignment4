@@ -5,7 +5,7 @@
 
 NodeData::NodeData() { data = nullptr; } // default
 
-NodeData::~NodeData() {} // needed so strings are deleted properly
+NodeData::~NodeData() { delete data; } // needed so strings are deleted properly
 
 NodeData::NodeData(const NodeData &nd) { data = nd.data; } // copy
 

@@ -58,6 +58,8 @@ public:
     void bstreeToArray(NodeData *[]);
     // turn array to bstree
     void arrayToBSTree(NodeData *[]);
+    // print bstree
+    void printBSTree();
 
 private:
     struct Node
@@ -89,5 +91,6 @@ private:
     void deleteCurrent(Node *&current, NodeData *&);
     // remove helper
     NodeData *findAndDeleteJustBigger(Node *&current);
+    // printBSTree helper
 };
 #endif

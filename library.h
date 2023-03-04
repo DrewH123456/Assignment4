@@ -24,7 +24,7 @@ private:
 
     // Containers
     UserContainer *userContain;
-    ItemContainer *ItemContain;
+    ItemContainer *itemContain;
 
 public:
     // Constructor
@@ -43,5 +43,7 @@ public:
 
     // retrieves book based on title and author
     Book *retrieveBook(string title, string author) const;
+
+    void displayBooks() const;
 };
 #endif
