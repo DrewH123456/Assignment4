@@ -17,6 +17,10 @@ ChildrenBook::ChildrenBook()
     checkedOut = 0;
 }
 
+ChildrenBook::~ChildrenBook()
+{
+}
+
 //---------------------------------------------------------------------------
 // countAvailable
 // Counts available copies
@@ -64,13 +68,10 @@ Item *ChildrenBook::create() const
 // sets item's data using info from line in infile
 void ChildrenBook::setData(ifstream &inputFile)
 {
-    string author;
-    string title;
-    int year;
     string dummy; // used in final getLine to move inputFile to next line
 
     inputFile.get();
-    getline(inputFile, author, ',');
+    getline(inputFile, authorName, ',');
     inputFile.get();
     getline(inputFile, title, ',');
     inputFile >> year;
@@ -79,8 +80,10 @@ void ChildrenBook::setData(ifstream &inputFile)
 
 void ChildrenBook::print(ostream &out) const
 {
-    out << setw(5) << available << setw(15) << authorName << setw(15) << title
-        << setw(10) << year << endl;
+    const ChildrenBook &children = static_cast<const ChildrenBook &>(*this);
+    out << setw(5) << children.available << setw(15) << children.authorName
+        << setw(15) << children.title
+        << setw(10) << children.year << endl;
 }
 
 //---------------------------------------------------------------------------

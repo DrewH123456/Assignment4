@@ -20,11 +20,10 @@ protected:
     int checkedOut; // checked out item count
 
 public:
-    // constructor, setting corresponding data members
-    Item();
+    Item(){};
 
     // Destructor
-    virtual ~Item();
+    virtual ~Item(){};
 
     // Checks available count for given item
     virtual int countAvailable() const = 0;

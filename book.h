@@ -16,8 +16,10 @@ class Book : public Item
 {
 
 public:
+    Book(){};
+
     // Destructor
-    virtual ~Book();
+    virtual ~Book(){};
 };
 
 #endif

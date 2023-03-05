@@ -8,7 +8,7 @@
 #define PERIODICAL_H
 
 #include "book.h"
-#include "item.h"
+// #include "item.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -29,16 +29,16 @@ public:
     virtual ~Periodical();
 
     // Counts available copies
-    int countAvailable() const;
+    virtual int countAvailable() const;
 
     // Checks checked out count for given book
-    int countCheckedOut() const;
+    virtual int countCheckedOut() const;
 
     // Checks out this book for a given user in a given library
-    void checkOut();
+    virtual void checkOut();
 
     // Returns this book for a given user in a given library
-    void returnItem();
+    virtual void returnItem();
 
     // Allows item factory to create a periodical object
     virtual Item *create() const;
@@ -53,12 +53,12 @@ public:
     // virtual ostream &operator<<(ostream &output, const Item &item) const;
 
     // Overloaded comparison operators
-    bool operator<(const Item &other) const;
-    bool operator>(const Item &other) const;
-    bool operator>=(const Item &other) const;
-    bool operator<=(const Item &other) const;
-    bool operator==(const Item &other) const;
-    bool operator!=(const Item &other) const;
+    virtual bool operator<(const Item &other) const;
+    virtual bool operator>(const Item &other) const;
+    virtual bool operator>=(const Item &other) const;
+    virtual bool operator<=(const Item &other) const;
+    virtual bool operator==(const Item &other) const;
+    virtual bool operator!=(const Item &other) const;
 };
 
 #endif

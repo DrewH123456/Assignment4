@@ -6,7 +6,6 @@
 
 #include "periodical.h"
 #include <iomanip>
-using namespace std;
 
 //---------------------------------------------------------------------------
 // Periodical
@@ -15,6 +14,10 @@ Periodical::Periodical()
 {
     available = 5;
     checkedOut = 0;
+}
+
+Periodical::~Periodical()
+{
 }
 
 //---------------------------------------------------------------------------
@@ -64,9 +67,6 @@ Item *Periodical::create() const
 // sets item's data using info from line in infile
 void Periodical::setData(ifstream &inputFile)
 {
-    string title;
-    int month;
-    int year;
     string dummy; // used in final getLine to move inputFile to next line
 
     inputFile.get();
@@ -81,8 +81,9 @@ void Periodical::setData(ifstream &inputFile)
 // prints book's description
 void Periodical::print(ostream &out) const
 {
-    out << setw(5) << available << setw(15) << "" << setw(25)
-        << title << setw(5) << month << setw(5) << year << endl;
+    const Periodical &periodical = static_cast<const Periodical &>(*this);
+    out << setw(5) << periodical.available << setw(15) << "" << setw(25)
+        << periodical.title << setw(5) << periodical.month << setw(5) << periodical.year << endl;
 }
 
 //---------------------------------------------------------------------------

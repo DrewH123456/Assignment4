@@ -17,6 +17,10 @@ Fiction::Fiction()
     checkedOut = 0;
 }
 
+Fiction::~Fiction()
+{
+}
+
 //---------------------------------------------------------------------------
 // countAvailable
 // Counts available copies
@@ -64,13 +68,10 @@ Item *Fiction::create() const
 // sets item's data using info from line in infile
 void Fiction::setData(ifstream &inputFile)
 {
-    string author;
-    string title;
-    int year;
     string dummy; // used in final getLine to move inputFile to next line
 
     inputFile.get();
-    getline(inputFile, author, ',');
+    getline(inputFile, authorName, ',');
     inputFile.get();
     getline(inputFile, title, ',');
     inputFile >> year;
@@ -82,8 +83,8 @@ void Fiction::setData(ifstream &inputFile)
 // prints book's description
 void Fiction::print(ostream &out) const
 {
-    out << setw(5) << available << setw(15) << authorName << setw(15) << title
-        << setw(10) << year << endl;
+    const Fiction &fiction = static_cast<const Fiction &>(*this);
+    out << setw(5) << fiction.available << setw(15) << fiction.authorName << setw(15) << fiction.title << setw(10) << fiction.year << endl;
 }
 
 //---------------------------------------------------------------------------
