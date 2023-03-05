@@ -5,10 +5,7 @@
  */
 
 #include "fiction.h"
-#include "book.h"
-#include "item.h"
-#include <string>
-#include <fstream>
+#include <iomanip>
 using namespace std;
 
 //---------------------------------------------------------------------------
@@ -78,6 +75,15 @@ void Fiction::setData(ifstream &inputFile)
     getline(inputFile, title, ',');
     inputFile >> year;
     getline(inputFile, dummy, '\n');
+}
+
+//---------------------------------------------------------------------------
+// print
+// prints book's description
+void Fiction::print(ostream &out) const
+{
+    out << setw(5) << available << setw(15) << authorName << setw(15) << title
+        << setw(10) << year << endl;
 }
 
 //---------------------------------------------------------------------------

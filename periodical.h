@@ -8,6 +8,11 @@
 #define PERIODICAL_H
 
 #include "book.h"
+#include "item.h"
+#include <string>
+#include <iostream>
+#include <fstream>
+using namespace std;
 
 class Periodical : public Book
 {
@@ -41,6 +46,7 @@ public:
     // sets item's data using info from line in infile
     virtual void setData(ifstream &inputFile);
 
+    // prints book's description
     virtual void print(ostream &out) const;
 
     // Overloaded output operator

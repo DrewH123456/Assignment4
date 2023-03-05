@@ -9,7 +9,6 @@
 #include "itemfactory.h"
 #include "item.h"
 #include "itemcontainer.h"
-#include <istream>
 #include <iostream>
 #include <fstream>
 using namespace std;

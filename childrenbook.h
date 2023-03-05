@@ -1,17 +1,19 @@
 /*
- * The Fiction class represents a periodical item in the library system.
+ * The ChildrenBook class represents a children book item in the library system.
  * It inherits from the Book class and includes additional data members specific
- * to periodicals, such as the date issues and title.
+ * to children books, such as author and title
  */
 
-#ifndef FICTION_H
-#define FICTION_H
+#ifndef CHILDRENBOOK_H
+#define CHILDRENBOOK_H
 
+#include "item.h"
 #include "book.h"
 #include <string>
-using namespace std;
+#include <iostream>
+#include <fstream>
 
-class Fiction : public Book
+class ChildrenBook : public Book
 {
 protected:
     string authorName;
@@ -20,10 +22,10 @@ protected:
 
 public:
     // Constructor
-    Fiction();
+    ChildrenBook();
 
     // Destructor
-    virtual ~Fiction();
+    virtual ~ChildrenBook();
 
     // Counts available copies
     int countAvailable() const;
@@ -37,11 +39,13 @@ public:
     // Returns this book for a given user in a given library
     void returnItem();
 
-    // Allows item factory to create a fiction object
+    // Allows item factory to create a children book object
     virtual Item *create() const;
 
+    // sets item's data using info from line in infile
     virtual void setData(ifstream &inputFile);
 
+    // prints book's description
     virtual void print(ostream &out) const;
 
     // Overloaded output operator

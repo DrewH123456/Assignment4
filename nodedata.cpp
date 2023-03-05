@@ -12,6 +12,13 @@ NodeData::NodeData(const NodeData &nd) { data = nd.data; } // copy
 NodeData::NodeData(Item *i) { data = i; } // cast string to NodeData
 
 //----------------------------------------------------------------------------
+// print
+void NodeData::print(ostream &cout) const
+{
+    data->print(cout);
+}
+
+//----------------------------------------------------------------------------
 // operator=
 
 NodeData &NodeData::operator=(const NodeData &rhs)

@@ -7,6 +7,10 @@
 #ifndef ITEM_H
 #define ITEM_H
 
+#include <string>
+#include <iostream>
+#include <fstream>
+
 using namespace std;
 
 class Item

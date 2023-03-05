@@ -5,10 +5,7 @@
  */
 
 #include "childrenbook.h"
-#include "book.h"
-#include "item.h"
-#include <string>
-#include <fstream>
+#include <iomanip>
 using namespace std;
 
 //---------------------------------------------------------------------------
@@ -82,6 +79,8 @@ void ChildrenBook::setData(ifstream &inputFile)
 
 void ChildrenBook::print(ostream &out) const
 {
+    out << setw(5) << available << setw(15) << authorName << setw(15) << title
+        << setw(10) << year << endl;
 }
 
 //---------------------------------------------------------------------------

@@ -7,8 +7,10 @@
 
 #include <string>
 #include <vector>
-#include "book.h"
 using namespace std;
+
+class Book;
+
 class Patron
 {
 private:

@@ -5,10 +5,7 @@
  */
 
 #include "periodical.h"
-#include "book.h"
-#include "item.h"
-#include <string>
-#include <fstream>
+#include <iomanip>
 using namespace std;
 
 //---------------------------------------------------------------------------
@@ -77,6 +74,15 @@ void Periodical::setData(ifstream &inputFile)
     inputFile >> month;
     inputFile >> year;
     getline(inputFile, dummy, '\n');
+}
+
+//---------------------------------------------------------------------------
+// print
+// prints book's description
+void Periodical::print(ostream &out) const
+{
+    out << setw(5) << available << setw(15) << "" << setw(25)
+        << title << setw(5) << month << setw(5) << year << endl;
 }
 
 //---------------------------------------------------------------------------
