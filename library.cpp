@@ -15,8 +15,13 @@ using namespace std;
 
 Library::Library()
 {
-    ItemContainer *myContainer = new ItemContainer();
-    itemContain = myContainer;
+    ItemContainer *tempContainer = new ItemContainer();
+    itemContain = tempContainer;
+}
+
+Library::~Library()
+{
+    delete itemContain;
 }
 
 void Library::readItems()
@@ -24,13 +29,17 @@ void Library::readItems()
     // reads in file
     string fileName = "data4books.txt";
     ifstream inputFile(fileName);
+    if (!inputFile)
+    {
+        cout << "File could not be opened." << endl;
+    }
     char itemType;
     // for each line in txt file, call setData
     while (true)
     {
         inputFile >> itemType;
         if (inputFile.eof())
-            return;
+            break;
         Item *currentItem = itemFac->createIt(itemType);
         if (currentItem != nullptr)
         {
@@ -38,8 +47,10 @@ void Library::readItems()
             itemContain->addItem(itemType, currentItem);
         }
     }
+    inputFile.close();
 }
 
 void Library::displayBooks() const
 {
+    itemContain->printTrees();
 }

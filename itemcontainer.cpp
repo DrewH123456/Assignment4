@@ -39,3 +39,11 @@ void ItemContainer::addItem(char ch, Item *addItem)
     NodeData *data = new NodeData(addItem);
     itemTrees.at(ch)->insert(data);
 }
+
+void ItemContainer::printTrees() const
+{
+    for (const auto &pair : itemTrees)
+    {
+        pair.second->printBSTree();
+    }
+}
