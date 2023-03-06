@@ -12,7 +12,7 @@
 // Constructor
 Periodical::Periodical()
 {
-    available = 5;
+    available = 1;
     checkedOut = 0;
 }
 

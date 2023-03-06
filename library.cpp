@@ -17,6 +17,8 @@ Library::Library()
 {
     ItemContainer *tempContainer = new ItemContainer();
     itemContain = tempContainer;
+    ItemFactory *tempFac = new ItemFactory();
+    itemFac = tempFac;
 }
 
 Library::~Library()
@@ -46,6 +48,8 @@ void Library::readItems()
             currentItem->setData(inputFile);
             itemContain->addItem(itemType, currentItem);
         }
+        string dummy;
+        getline(inputFile, dummy, '\n');
     }
     inputFile.close();
 }

@@ -17,7 +17,7 @@ ItemFactory::ItemFactory()
 {
     for (int i = 0; i < 26; i++)
     {
-        objFactory[i] = NULL;
+        objFactory[i] = nullptr;
     }
     objFactory[2] = new ChildrenBook();
     objFactory[5] = new Fiction();
@@ -26,10 +26,10 @@ ItemFactory::ItemFactory()
 ItemFactory::~ItemFactory()
 {
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 26; i++)
         {
             delete objFactory[i];
-            objFactory[i] = NULL;
+            objFactory[i] = nullptr;
         }
     }
 }
@@ -48,7 +48,7 @@ int ItemFactory::hash(char ch) const
 {
     if (ch != 'C' && ch != 'F' && ch != 'P')
     {
-        cout << "ERROR: '" << ch << "' is not a valid LibItem type.";
+        cout << "ERROR: '" << ch << "' is not a valid LibItem type." << endl;
         return -1;
     }
     return ch - 'A';
