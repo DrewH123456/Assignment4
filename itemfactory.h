@@ -12,7 +12,7 @@ class Item;
 class ItemFactory
 {
 private:
-    Item *objFactory[10];    // contains array of each object
+    Item *objFactory[26];    // contains array of each object
     int hash(char ch) const; // hash function
 
 public:

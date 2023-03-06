@@ -15,13 +15,13 @@ class Item;
 
 ItemFactory::ItemFactory()
 {
-    objFactory[0] = new ChildrenBook();
-    objFactory[1] = new Fiction();
-    objFactory[2] = new Periodical();
-    for (int i = 3; i < 10; i++)
+    for (int i = 0; i < 26; i++)
     {
         objFactory[i] = NULL;
     }
+    objFactory[2] = new ChildrenBook();
+    objFactory[5] = new Fiction();
+    objFactory[15] = new Periodical();
 }
 ItemFactory::~ItemFactory()
 {
