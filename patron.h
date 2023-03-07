@@ -7,6 +7,8 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
+#include <iostream>
 using namespace std;
 
 class Book;
@@ -22,17 +24,16 @@ private:
 
 public:
     // Default constructor
-    Patron();
-
-    // Constructor
-    // Creates the object setting corresponding data member
-    Patron(const string &id, const string &lastName, const string &firstName);
+    Patron(){};
 
     // Destructor
-    ~Patron();
+    ~Patron(){};
+
+    // sets item's data using info from line in infile
+    void setData(ifstream &inputFile);
 
     // Returns the unique identifier for the patron
-    string getId() const;
+    int getId() const;
 
     // Returns the last name of the patron
     string getLastName() const;
@@ -48,6 +49,9 @@ public:
 
     // Displays the checkout history for the patron
     void viewHistory() const;
+
+    // Displays patron's id and name
+    void print() const;
 };
 
 #endif

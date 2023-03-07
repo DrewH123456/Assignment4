@@ -12,6 +12,8 @@ int main()
 {
     Library *l = new Library();
     l->readItems();
-    l->displayBooks();
+    l->displayItems();
+    l->readUsers();
+    l->displayUsers();
     return 0;
 }

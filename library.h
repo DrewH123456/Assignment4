@@ -11,8 +11,8 @@
 #include <string>
 class ItemFactory;
 class ActionFactory;
-class UserContainer;
 class ItemContainer;
+class HashTable;
 class Patron;
 class Book;
 
@@ -24,8 +24,8 @@ private:
     ItemFactory *itemFac;
 
     // Containers
-    UserContainer *userContain;
     ItemContainer *itemContain;
+    HashTable *userTable;
 
 public:
     // Constructor
@@ -45,6 +45,8 @@ public:
     // // retrieves book based on title and author
     // Book *retrieveBook(string title, string author) const;
 
-    void displayBooks() const;
+    void displayItems() const;
+
+    void displayUsers() const;
 };
 #endif

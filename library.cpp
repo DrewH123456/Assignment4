@@ -9,16 +9,17 @@
 #include "itemfactory.h"
 #include "item.h"
 #include "itemcontainer.h"
+#include "hashtable.h"
+#include "patron.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
 
 Library::Library()
 {
-    ItemContainer *tempContainer = new ItemContainer();
-    itemContain = tempContainer;
-    ItemFactory *tempFac = new ItemFactory();
-    itemFac = tempFac;
+    itemContain = new ItemContainer();
+    itemFac = new ItemFactory();
+    userTable = new HashTable();
 }
 
 Library::~Library()
@@ -54,7 +55,40 @@ void Library::readItems()
     inputFile.close();
 }
 
-void Library::displayBooks() const
+void Library::displayItems() const
 {
     itemContain->printTrees();
+}
+
+void Library::readUsers()
+{
+    // reads in file
+    string fileName = "data4patrons.txt";
+    ifstream inputFile(fileName);
+    if (!inputFile)
+    {
+        cout << "File could not be opened." << endl;
+    }
+    // for each line in txt file, call setData
+    bool endOfFile = false;
+    while (!endOfFile)
+    {
+        char dummy = inputFile.peek();
+        if (inputFile.eof())
+        {
+            endOfFile = true;
+        }
+        if (!endOfFile)
+        {
+            Patron *currentPatron = new Patron();
+            currentPatron->setData(inputFile);
+            userTable->insert(currentPatron->getId(), currentPatron);
+        }
+    }
+    inputFile.close();
+}
+
+void Library::displayUsers() const
+{
+    userTable->display();
 }

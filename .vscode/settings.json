@@ -5,7 +5,8 @@
     "iosfwd": "cpp",
     "iostream": "cpp",
     "new": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "vector": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

@@ -484,6 +484,7 @@ bool BinTree::insert(NodeData *dataptr)
          // If the data is already in the tree, delete the new node and return false
          delete newNode;
          newNode = nullptr;
+         cout << "Item already exists in library." << endl;
          return false;
       }
       else if (*newNode->data < *current->data)
