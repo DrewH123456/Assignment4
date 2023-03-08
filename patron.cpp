@@ -15,6 +15,11 @@ void Patron::setData(ifstream &inputFile)
     getline(inputFile, dummy, '\n');
 }
 
+void Patron::setDataCommand(ifstream &inputFile)
+{
+    inputFile >> idNumber;
+}
+
 int Patron::getId() const
 {
     return idNumber;

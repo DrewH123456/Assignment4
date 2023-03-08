@@ -78,6 +78,17 @@ void ChildrenBook::setData(ifstream &inputFile)
     getline(inputFile, dummy, '\n');
 }
 
+//---------------------------------------------------------------------------
+// setData
+// sets item's data using info from line in infile from data4commands.txt
+void ChildrenBook::setDataCommand(ifstream &inputFile)
+{
+    inputFile.get();
+    getline(inputFile, title, ',');
+    inputFile.get();
+    getline(inputFile, authorName, ',');
+}
+
 void ChildrenBook::print(ostream &out) const
 {
     const ChildrenBook &children = static_cast<const ChildrenBook &>(*this);

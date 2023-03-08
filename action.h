@@ -1,4 +1,4 @@
-/*
+/**
  * The Action class is the action that should be taken by the library
  * This class is an abstract class, served as the parent class for factory
  */
@@ -12,27 +12,20 @@
 
 class Action
 {
-protected:
-    Patron *p; // Pointer to the patron for the action
-    Item *i;   // Pointer to the item for the action
-    Library *l // Pointer to library for the action
-
-        public :
-        // Pure virtual default constructor
-        virtual Action() = 0;
+public:
+    // Pure virtual default constructor
+    Action(){};
 
     // Virtual destructor
-    virtual ~Action();
+    virtual ~Action(){};
 
     // sets private variables based off info from text file
-    Book *setItem();
-
-    Patron *setPatron();
-
-    Library *setLibrary();
+    virtual void setData(ifstream &inputFile) = 0;
 
     // executes the given action
     virtual bool execute() = 0;
+
+    virtual Action *create() const = 0;
 };
 
 #endif

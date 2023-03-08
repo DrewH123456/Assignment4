@@ -77,6 +77,17 @@ void Periodical::setData(ifstream &inputFile)
 }
 
 //---------------------------------------------------------------------------
+// setDataCommand
+// sets item's data using info from line in infile from data4commands.txt
+void Periodical::setDataCommand(ifstream &inputFile)
+{
+    inputFile >> year;
+    inputFile >> month;
+    inputFile.get();
+    getline(inputFile, title, ',');
+}
+
+//---------------------------------------------------------------------------
 // print
 // prints book's description
 void Periodical::print(ostream &out) const

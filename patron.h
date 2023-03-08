@@ -32,6 +32,8 @@ public:
     // sets item's data using info from line in infile
     void setData(ifstream &inputFile);
 
+    void setDataCommand(ifstream &inputFile);
+
     // Returns the unique identifier for the patron
     int getId() const;
 

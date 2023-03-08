@@ -42,6 +42,8 @@ public:
 
     virtual void setData(ifstream &inputFile) = 0;
 
+    virtual void setDataCommand(ifstream &inputFile) = 0;
+
     virtual void print(ostream &out) const = 0;
 
     // Overloaded output operator

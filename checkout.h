@@ -11,18 +11,24 @@
 #include "library.h"
 #include "action.h"
 
+class ItemFactory;
+
 class CheckOut : public Action
 {
-private:
+protected:
+    Patron *currentPatron; // Pointer to the patron for the action
+    Item *currentItem;     // Pointer to the item for the action
 public:
     // Constructor
-    CheckOut();
+    CheckOut(){};
 
     // Destructor
-    virtual ~CheckOut();
+    virtual ~CheckOut(){};
 
     // creates an action pointer to an object of the checkOut class
     virtual Action *create() const;
+
+    virtual void setData(ifstream &inputFile, ItemFactory *itemFac);
 
     // checks out a given book for a given user
     virtual bool execute();

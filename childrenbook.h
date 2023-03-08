@@ -42,8 +42,11 @@ public:
     // Allows item factory to create a children book object
     virtual Item *create() const;
 
-    // sets item's data using info from line in infile
+    // sets item's data using info from line in infile from data4books.txt
     virtual void setData(ifstream &inputFile);
+
+    // sets item's data using info from line in infile from data4commands.txt
+    virtual void setDataCommand(ifstream &inputFile);
 
     // prints book's description
     virtual void print(ostream &out) const;
