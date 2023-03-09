@@ -42,7 +42,7 @@ public:
     // retrieves patron based on id
     Patron *retrieveUser(int id) const;
 
-    // // retrieves book based on title and author
+    // retrieves book based on title and author
     Item *retrieveItem(Item *obj) const;
 
     void displayItems() const;

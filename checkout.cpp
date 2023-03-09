@@ -36,7 +36,7 @@ bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
     return true;
 }
 
-bool CheckOut::execute(Library *library)
+bool CheckOut::execute(Library *library) // delete command if no success
 {
     // uses currentID to assign patron item to matching patron found in h-table
     Patron *currentPatron = library->retrieveUser(currentID);
@@ -46,10 +46,11 @@ bool CheckOut::execute(Library *library)
     {
         return false;
     }
-    if (currentItem->checkOut()) // checks if item available, updates count
+    if (!currentItem->checkOut()) // checks if item available, updates count
     {
-        currentPatron->checkOutItem(addItem);
-        return true;
+        return false;
     }
-    return false;
+    currentPatron->checkOutItem(addItem);        // adds item to patron's books
+    currentPatron->updateHistory(this, addItem); // adds checkout to history
+    return true;
 }

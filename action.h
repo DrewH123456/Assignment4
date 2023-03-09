@@ -19,8 +19,8 @@ public:
     // Virtual destructor
     virtual ~Action(){};
 
-    // executes the given action
-    virtual bool execute() = 0;
+    // // executes the given action
+    // virtual bool execute() = 0;
 
     virtual Action *create() const = 0;
 };

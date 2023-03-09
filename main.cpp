@@ -3,6 +3,7 @@
 #include "periodical.h"
 #include "library.h"
 #include "itemfactory.h"
+#include "checkout.h"
 #include <iostream>
 #include <fstream>
 
@@ -15,5 +16,12 @@ int main()
     l->displayItems();
     l->readUsers();
     l->displayUsers();
+
+    // CheckOut *c = new CheckOut();
+    // ItemFactory *i = new ItemFactory();
+    // ifstream inputFile;
+    // inputFile.open("data4commands.txt");
+    // c->setData(inputFile, i);
+    // c->execute(l);
     return 0;
 }

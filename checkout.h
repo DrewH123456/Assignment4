@@ -30,8 +30,11 @@ public:
 
     bool setData(ifstream &inputFile, ItemFactory *itemFac);
 
+    // // checks out a given book for a given user
+    // virtual bool execute(Library *library);
+
     // checks out a given book for a given user
-    virtual bool execute(Library *library);
+    bool execute(Library *library);
 };
 
 #endif

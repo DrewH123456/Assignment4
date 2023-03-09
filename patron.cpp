@@ -39,3 +39,13 @@ void Patron::print() const
 {
     cout << idNumber << ": " << lastName << ", " << firstName << endl;
 }
+
+void Patron::checkOutItem(Item *addItem)
+{
+    // item is key, value set to 0 if not found in map, otherwise incremented++
+    checkedOutBooks[addItem]++;
+}
+
+void Patron::updateHistory(Action *addAction, Item *addItem)
+{
+}

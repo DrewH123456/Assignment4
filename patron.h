@@ -9,9 +9,11 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <unordered_map>
 using namespace std;
 
-class Book;
+class Item;
+class Action;
 
 class Patron
 {
@@ -19,8 +21,8 @@ private:
     int idNumber;
     string lastName;
     string firstName;
-    vector<Book *> books;
-    vector<Book *> history;
+    unordered_map<Item *, int> checkedOutBooks;
+    vector<Item *> history;
 
 public:
     // Default constructor
@@ -54,6 +56,9 @@ public:
 
     // Displays patron's id and name
     void print() const;
+
+    // Adds action and associated item to user's history
+    void updateHistory(Action *addAction, Item *addItem);
 };
 
 #endif
