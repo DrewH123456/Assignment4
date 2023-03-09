@@ -40,10 +40,10 @@ public:
     void readActions();
 
     // retrieves patron based on id
-    Patron *retrievePatron(int id) const;
+    Patron *retrieveUser(int id) const;
 
     // // retrieves book based on title and author
-    // Book *retrieveBook(string title, string author) const;
+    Item *retrieveItem(Item *obj) const;
 
     void displayItems() const;
 

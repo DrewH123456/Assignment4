@@ -46,3 +46,8 @@ void HashTable::display() const
         }
     }
 }
+
+Patron *HashTable::retrieveUser(int id) const
+{
+    return patronTable[id];
+}

@@ -14,7 +14,7 @@ using namespace std;
 ChildrenBook::ChildrenBook()
 {
     available = 5;
-    checkedOut = 0;
+    itemType = 'C';
 }
 
 ChildrenBook::~ChildrenBook()
@@ -30,20 +30,25 @@ int ChildrenBook::countAvailable() const
 }
 
 //---------------------------------------------------------------------------
-// countCheckedOut
-// Counts checked out count for given book
-int ChildrenBook::countCheckedOut() const
+// returnItemType
+// Returns item type for given item
+char ChildrenBook::returnItemType() const
 {
-    return checkedOut;
+    return itemType;
 }
 
 //---------------------------------------------------------------------------
 // checkOut
 // Checks out this book for a given user in a given library
-void ChildrenBook::checkOut()
+bool ChildrenBook::checkOut()
 {
-    available--;
-    checkedOut++;
+    if (available > 0)
+    {
+        available--;
+        return true;
+    }
+    cout << "Book unavailable at this time" << endl;
+    return false;
 }
 
 //---------------------------------------------------------------------------
@@ -52,7 +57,6 @@ void ChildrenBook::checkOut()
 void ChildrenBook::returnItem()
 {
     available++;
-    checkedOut--;
 }
 
 //---------------------------------------------------------------------------
@@ -105,7 +109,7 @@ bool ChildrenBook::operator==(const Item &other) const
     const ChildrenBook &otherChildrenBook =
         static_cast<const ChildrenBook &>(other);
     return (authorName == otherChildrenBook.authorName &&
-            title == otherChildrenBook.title && year == otherChildrenBook.year);
+            title == otherChildrenBook.title);
 }
 
 bool ChildrenBook::operator!=(const Item &other) const

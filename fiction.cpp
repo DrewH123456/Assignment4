@@ -14,7 +14,7 @@ using namespace std;
 Fiction::Fiction()
 {
     available = 5;
-    checkedOut = 0;
+    itemType = 'F';
 }
 
 Fiction::~Fiction()
@@ -30,20 +30,25 @@ int Fiction::countAvailable() const
 }
 
 //---------------------------------------------------------------------------
-// countCheckedOut
-// Counts checked out count for given book
-int Fiction::countCheckedOut() const
+// returnItemType
+// Returns item type for given item
+char Fiction::returnItemType() const
 {
-    return checkedOut;
+    return itemType;
 }
 
 //---------------------------------------------------------------------------
 // checkOut
 // Checks out this book for a given user in a given library
-void Fiction::checkOut()
+bool Fiction::checkOut()
 {
-    available--;
-    checkedOut++;
+    if (available > 0)
+    {
+        available--;
+        return true;
+    }
+    cout << "Book unavailable at this time" << endl;
+    return false;
 }
 
 //---------------------------------------------------------------------------
@@ -52,7 +57,6 @@ void Fiction::checkOut()
 void Fiction::returnItem()
 {
     available++;
-    checkedOut--;
 }
 
 //---------------------------------------------------------------------------
@@ -104,7 +108,7 @@ bool Fiction::operator==(const Item &other) const
 {
     const Fiction &otherFiction = static_cast<const Fiction &>(other);
     return (authorName == otherFiction.authorName &&
-            title == otherFiction.title && year == otherFiction.year);
+            title == otherFiction.title);
 }
 
 bool Fiction::operator!=(const Item &other) const

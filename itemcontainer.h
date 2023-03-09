@@ -27,6 +27,7 @@ public:
     void removeTree(char);
     void addItem(char, Item *);
     void printTrees() const;
+    Item *retrieveItem(Item *retrieveObj) const;
 };
 
 #endif

@@ -92,3 +92,13 @@ void Library::displayUsers() const
 {
     userTable->display();
 }
+
+Patron *Library::retrieveUser(int id) const
+{
+    return userTable->retrieveUser(id);
+}
+
+Item *Library::retrieveItem(Item *obj) const
+{
+    return itemContain->retrieveItem(obj);
+}

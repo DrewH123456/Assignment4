@@ -44,10 +44,10 @@ public:
     string getFirstName() const;
 
     // Adds a book to the list of books checked out by the patron
-    void checkOutBook(Book *book);
+    void checkOutItem(Item *item);
 
     // Removes a book from the list of books checked out by the patron
-    void returnBook(Book *book);
+    void returnBook(Item *item);
 
     // Displays the checkout history for the patron
     void viewHistory() const;

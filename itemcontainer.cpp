@@ -50,3 +50,12 @@ void ItemContainer::printTrees() const
         cout << endl;
     }
 }
+
+Item *ItemContainer::retrieveItem(Item *retrieveObj) const
+{
+    char itemType = retrieveObj->returnItemType();
+    NodeData search(retrieveObj);
+    NodeData *retrieve = nullptr;
+    itemTrees.at(itemType)->retrieve(search, retrieve);
+    return retrieve->returnData();
+}

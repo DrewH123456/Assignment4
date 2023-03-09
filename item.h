@@ -16,8 +16,8 @@ using namespace std;
 class Item
 {
 protected:
-    int available;  // available item count
-    int checkedOut; // checked out item count
+    int available; // available item count
+    char itemType; // object type, represented by char
 
 public:
     Item(){};
@@ -28,11 +28,11 @@ public:
     // Checks available count for given item
     virtual int countAvailable() const = 0;
 
-    // Checks checked out count for given item
-    virtual int countCheckedOut() const = 0;
+    // Returns item type for given item
+    virtual char returnItemType() const = 0;
 
     // Checks out this item for a given user
-    virtual void checkOut() = 0;
+    virtual bool checkOut() = 0;
 
     // Returns this item for a given user
     virtual void returnItem() = 0;

@@ -23,10 +23,11 @@ public:
     NodeData(Item *);           // data is set equal to parameter
     NodeData(const NodeData &); // copy constructor
     NodeData &operator=(const NodeData &);
+    Item *returnData() const; // returns item data
 
     // set class data from data file
     // returns true if the data is set, false when bad data, i.e., is eof
-    bool setData(istream &);
+    // bool setData(istream &);
     void print(ostream &) const;
     bool operator==(const NodeData &) const;
     bool operator!=(const NodeData &) const;

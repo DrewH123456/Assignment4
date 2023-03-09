@@ -13,7 +13,7 @@
 Periodical::Periodical()
 {
     available = 1;
-    checkedOut = 0;
+    itemType = 'P';
 }
 
 Periodical::~Periodical()
@@ -29,20 +29,25 @@ int Periodical::countAvailable() const
 }
 
 //---------------------------------------------------------------------------
-// countCheckedOut
-// Counts checked out count for given book
-int Periodical::countCheckedOut() const
+// returnItemType
+// Returns item type for given item
+char Periodical::returnItemType() const
 {
-    return checkedOut;
+    return itemType;
 }
 
 //---------------------------------------------------------------------------
 // checkOut
 // Checks out this book for a given user in a given library
-void Periodical::checkOut()
+bool Periodical::checkOut()
 {
-    available--;
-    checkedOut++;
+    if (available > 0)
+    {
+        available--;
+        return true;
+    }
+    cout << "Book unavailable at this time" << endl;
+    return false;
 }
 
 //---------------------------------------------------------------------------
@@ -51,7 +56,6 @@ void Periodical::checkOut()
 void Periodical::returnItem()
 {
     available++;
-    checkedOut--;
 }
 
 //---------------------------------------------------------------------------

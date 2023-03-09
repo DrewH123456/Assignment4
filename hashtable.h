@@ -23,6 +23,8 @@ public:
     // int hash(int id) const; // hash function
 
     void display() const;
+
+    Patron *retrieveUser(int id) const;
 };
 
 #endif

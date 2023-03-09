@@ -19,9 +19,6 @@ public:
     // Virtual destructor
     virtual ~Action(){};
 
-    // sets private variables based off info from text file
-    virtual void setData(ifstream &inputFile) = 0;
-
     // executes the given action
     virtual bool execute() = 0;
 

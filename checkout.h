@@ -16,8 +16,8 @@ class ItemFactory;
 class CheckOut : public Action
 {
 protected:
-    Patron *currentPatron; // Pointer to the patron for the action
-    Item *currentItem;     // Pointer to the item for the action
+    int currentID;     // id number of patron being acted on
+    Item *currentItem; // item containing data of book being acted on
 public:
     // Constructor
     CheckOut(){};
@@ -28,10 +28,10 @@ public:
     // creates an action pointer to an object of the checkOut class
     virtual Action *create() const;
 
-    virtual void setData(ifstream &inputFile, ItemFactory *itemFac);
+    bool setData(ifstream &inputFile, ItemFactory *itemFac);
 
     // checks out a given book for a given user
-    virtual bool execute();
+    virtual bool execute(Library *library);
 };
 
 #endif

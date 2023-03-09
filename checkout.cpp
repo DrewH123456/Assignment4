@@ -11,28 +11,45 @@ Action *CheckOut::create() const
     return new CheckOut();
 }
 
-void CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
+bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
 {
     string dummy;   // used in final getLine to move inputFile to next line
     char itemType;  // takes in item type
     char coverType; // takes in cover type
 
-    currentPatron->setDataCommand(inputFile); // assigns id to currentPatron
+    inputFile >> currentID;
+    if (currentID < 0 || currentID > 9999) // checks if id is valid
+    {
+        return false;
+    }
     inputFile >> itemType;
-    currentItem = itemFac->createIt(itemType); // creates item using factory
     inputFile >> coverType;
     if (coverType != 'H') // validates book cover type
     {
         cout << "Invalid cover type" << endl;
-        delete currentItem;
-        currentItem = nullptr;
         getline(inputFile, dummy, '\n');
-        return;
+        return false;
     }
+    currentItem = itemFac->createIt(itemType);
     currentItem->setDataCommand(inputFile); // sets item's data
     getline(inputFile, dummy, '\n');        // skips to next line
+    return true;
 }
 
-bool CheckOut::execute()
+bool CheckOut::execute(Library *library)
 {
+    // uses currentID to assign patron item to matching patron found in h-table
+    Patron *currentPatron = library->retrieveUser(currentID);
+    // uses currentItem to assign item to matching book found in item bin tree
+    Item *addItem = library->retrieveItem(currentItem);
+    if (currentPatron == nullptr || currentItem == nullptr)
+    {
+        return false;
+    }
+    if (currentItem->checkOut()) // checks if item available, updates count
+    {
+        currentPatron->checkOutItem(addItem);
+        return true;
+    }
+    return false;
 }

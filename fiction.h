@@ -31,11 +31,11 @@ public:
     // Counts available copies
     virtual int countAvailable() const;
 
-    // Checks checked out count for given book
-    virtual int countCheckedOut() const;
+    // Returns item type for given item
+    virtual char returnItemType() const;
 
     // Checks out this book for a given user in a given library
-    virtual void checkOut();
+    virtual bool checkOut();
 
     // Returns this book for a given user in a given library
     virtual void returnItem();

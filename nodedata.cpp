@@ -19,6 +19,13 @@ void NodeData::print(ostream &cout) const
 }
 
 //----------------------------------------------------------------------------
+// returns item data as pointer
+Item *NodeData::returnData() const
+{
+    return data;
+}
+
+//----------------------------------------------------------------------------
 // operator=
 
 NodeData &NodeData::operator=(const NodeData &rhs)
