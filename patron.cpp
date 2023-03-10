@@ -43,7 +43,8 @@ void Patron::print() const
 
 void Patron::displayItems() const
 {
-    for (int i = 0; i < history.size(); i++)
+    cout << checkedOutItems.size() << endl;
+    for (int i = 0; i < checkedOutItems.size(); i++)
     {
         checkedOutItems[i]->individualPrint();
     }

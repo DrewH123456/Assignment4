@@ -175,29 +175,62 @@ void printBSTree()
 // retrieve()
 // retrieve the give node data
 //----------------------------------------------------------------
-bool BinTree::retrieve(const NodeData &nd, NodeData *&foundNode) const
+// bool BinTree::retrieve(const NodeData &nd, NodeData *&foundNode) const
+// {
+//    Node *current = root; // start at the root of the tree
+//    while (current != nullptr)
+//    {
+//       cout << "ayo" << endl;
+//       // Compare the search data with the current node's data
+//       if (*(current->data) == nd)
+//       {
+//          cout << "equals" << endl;
+//          // If a match is found,
+//          // store the current node's data in the foundNode pointer
+//          foundNode = current->data;
+//          return true;
+//       }
+//       else if (*(current->data) < nd)
+//       {
+//          cout << "right" << endl;
+//          current = current->right; // search the right subtree
+//       }
+//       else
+//       {
+//          cout << "left" << endl;
+//          current = current->left; // search the left subtree
+//       }
+//    }
+//    return false; // if the node is not found, return false
+// }
+
+bool BinTree::retrieve(const NodeData &itemLookingFor, NodeData *&foundItem) const
 {
-   Node *current = root; // start at the root of the tree
-   while (current != nullptr)
+   foundItem = nullptr;
+   return retrieveHelper(root, itemLookingFor, foundItem);
+}
+
+bool BinTree::retrieveHelper(const Node *current, const NodeData &target,
+                             NodeData *&foundItem) const
+{
+   if (current == nullptr)
    {
-      // Compare the search data with the current node's data
-      if (*(current->data) == nd)
-      {
-         // If a match is found,
-         // store the current node's data in the foundNode pointer
-         foundNode = current->data;
-         return true;
-      }
-      else if (*(current->data) < nd)
-      {
-         current = current->right; // search the right subtree
-      }
-      else
-      {
-         current = current->left; // search the left subtree
-      }
+      return false;
    }
-   return false; // if the node is not found, return false
+
+   if (*current->data == target)
+   {
+      foundItem = current->data;
+      return true;
+   }
+   if (target < *current->data)
+   {
+      return retrieveHelper(current->left, target, foundItem);
+   }
+   else
+   {
+      return retrieveHelper(current->right, target, foundItem);
+   }
 }
 
 //----------------------------------------------------------------

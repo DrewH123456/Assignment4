@@ -14,18 +14,18 @@ int main()
     Library *l = new Library();
     l->readItems();
     l->displayItems();
-    l->readUsers();
-    // l->displayUsers();
+    // l->readUsers();
+    // // l->displayUsers();
 
-    CheckOut *c = new CheckOut();
-    ItemFactory *i = new ItemFactory();
-    ifstream inputFile;
-    inputFile.open("data4commands.txt");
-    char e;
-    inputFile >> e;
-    c->setData(inputFile, i);
-    c->execute(l);
-    l->displayUsers();
+    // CheckOut *c = new CheckOut();
+    // ItemFactory *i = new ItemFactory();
+    // ifstream inputFile;
+    // inputFile.open("data4commands.txt");
+    // char e;
+    // inputFile >> e;
+    // c->setData(inputFile, i);
+    // c->execute(l);
+    // l->displayUsers();
 
     return 0;
 }

@@ -48,13 +48,25 @@ bool CheckOut::execute(Library *library) // delete command if no success
     Patron *retrievedPatron = library->retrieveUser(currentID);
     // uses currentItem to assign item to matching book found in item bin tree
     retrievedItem = library->retrieveItem(currentItem);
-    if (retrievedPatron == nullptr || retrievedItem == nullptr)
+    // currentItem->individualPrint();
+    if (retrievedPatron == nullptr)
     {
+        cout << "patron null" << endl;
         return false;
     }
+    if (retrievedItem == nullptr)
+    {
+        cout << "item null" << endl;
+        return false;
+    }
+    // if (retrievedPatron == nullptr || retrievedItem == nullptr)
+    // {
+    //     return false;
+    // }
     retrievedItem->print(cout);
     if (!retrievedItem->checkOut()) // checks if item available, updates count
     {
+        cout << "cant check out" << endl;
         return false;
     }
     retrievedPatron->checkOutItem(retrievedItem); // adds item to patron's books

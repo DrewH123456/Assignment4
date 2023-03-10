@@ -70,6 +70,9 @@ private:
     };
     Node *root; // root of the tree
 
+    bool retrieveHelper(const Node *current, const NodeData &target,
+                        NodeData *&foundItem) const;
+
     // utility functions
     // printBSTree helper
     void printBSTreeHelper(Node *current) const;

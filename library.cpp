@@ -38,8 +38,11 @@ void Library::readItems()
     }
     char itemType;
     // for each line in txt file, call setData
+    int i = 0;
     while (true)
     {
+        cout << i << endl;
+        i++;
         inputFile >> itemType;
         if (inputFile.eof())
             break;

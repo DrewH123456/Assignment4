@@ -9,11 +9,6 @@
 #include <iostream>
 using namespace std;
 
-// int HashTable::hash(int id) const
-// {
-//     return id % 4673;
-// }
-
 bool HashTable::insert(int id, Patron *patron)
 {
     if (id > 9999 || id < 0)
