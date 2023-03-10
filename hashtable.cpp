@@ -43,6 +43,7 @@ void HashTable::display() const
         if (patronTable[i] != nullptr)
         {
             patronTable[i]->print();
+            patronTable[i]->displayItems();
         }
     }
 }

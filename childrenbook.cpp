@@ -102,6 +102,17 @@ void ChildrenBook::print(ostream &out) const
 }
 
 //---------------------------------------------------------------------------
+// individualPrint
+// prints individual book's description
+void ChildrenBook::individualPrint() const
+{
+    const ChildrenBook &childrenBook = static_cast<const ChildrenBook &>(*this);
+    cout << setw(28) << "    " << childrenBook.title
+         << setw(15) << "    " << childrenBook.authorName
+         << setw(4) << childrenBook.year << endl;
+}
+
+//---------------------------------------------------------------------------
 // operator
 // Overloaded comparison operators
 bool ChildrenBook::operator==(const Item &other) const

@@ -4,6 +4,7 @@
  **/
 
 #include "patron.h"
+#include "item.h"
 
 void Patron::setData(ifstream &inputFile)
 {
@@ -40,12 +41,21 @@ void Patron::print() const
     cout << idNumber << ": " << lastName << ", " << firstName << endl;
 }
 
-void Patron::checkOutItem(Item *addItem)
+void Patron::displayItems() const
 {
-    // item is key, value set to 0 if not found in map, otherwise incremented++
-    checkedOutBooks[addItem]++;
+    for (int i = 0; i < history.size(); i++)
+    {
+        checkedOutItems[i]->individualPrint();
+    }
 }
 
-void Patron::updateHistory(Action *addAction, Item *addItem)
+// item added to patron's checkedOutItems collection
+void Patron::checkOutItem(Item *addItem)
 {
+    checkedOutItems.push_back(addItem);
+}
+
+void Patron::updateHistory(Action *addAction)
+{
+    history.push_back(addAction);
 }

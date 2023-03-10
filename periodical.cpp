@@ -102,6 +102,15 @@ void Periodical::print(ostream &out) const
 }
 
 //---------------------------------------------------------------------------
+// individualPrint
+// prints individual book's description
+void Periodical::individualPrint() const
+{
+    const Periodical &periodical = static_cast<const Periodical &>(*this);
+    cout << setw(3) << periodical.month << setw(6) << periodical.year << setw(70) << periodical.title << endl;
+}
+
+//---------------------------------------------------------------------------
 // operator<<
 // Overloaded output operator
 // virtual ostream &operator<<(ostream &output, const Item &item) const

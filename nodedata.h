@@ -38,6 +38,7 @@ public:
 
 private:
     Item *data;
+    int yo = 5;
 };
 
 #endif

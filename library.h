@@ -14,7 +14,7 @@ class ActionFactory;
 class ItemContainer;
 class HashTable;
 class Patron;
-class Book;
+class Item;
 
 class Library
 {

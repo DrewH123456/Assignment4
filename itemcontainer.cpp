@@ -57,5 +57,9 @@ Item *ItemContainer::retrieveItem(Item *retrieveObj) const
     NodeData search(retrieveObj);
     NodeData *retrieve = nullptr;
     itemTrees.at(itemType)->retrieve(search, retrieve);
+    if (retrieve == nullptr)
+    {
+        return nullptr;
+    }
     return retrieve->returnData();
 }

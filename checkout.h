@@ -16,8 +16,10 @@ class ItemFactory;
 class CheckOut : public Action
 {
 protected:
-    int currentID;     // id number of patron being acted on
-    Item *currentItem; // item containing data of book being acted on
+    int currentID;                 // id number of patron being acted on
+    Item *currentItem;             // item containing data of book being acted on
+    Item *retrievedItem = nullptr; // item retrieved from library's bintree
+
 public:
     // Constructor
     CheckOut(){};
@@ -35,6 +37,9 @@ public:
 
     // checks out a given book for a given user
     bool execute(Library *library);
+
+    // displays the type of action it is
+    void display() const;
 };
 
 #endif

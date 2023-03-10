@@ -20,6 +20,7 @@ bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
     inputFile >> currentID;
     if (currentID < 0 || currentID > 9999) // checks if id is valid
     {
+        getline(inputFile, dummy, '\n');
         return false;
     }
     inputFile >> itemType;
@@ -31,6 +32,11 @@ bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
         return false;
     }
     currentItem = itemFac->createIt(itemType);
+    if (currentItem == nullptr) // if invalid book type, return false
+    {
+        getline(inputFile, dummy, '\n');
+        return false;
+    }
     currentItem->setDataCommand(inputFile); // sets item's data
     getline(inputFile, dummy, '\n');        // skips to next line
     return true;
@@ -39,18 +45,25 @@ bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
 bool CheckOut::execute(Library *library) // delete command if no success
 {
     // uses currentID to assign patron item to matching patron found in h-table
-    Patron *currentPatron = library->retrieveUser(currentID);
+    Patron *retrievedPatron = library->retrieveUser(currentID);
     // uses currentItem to assign item to matching book found in item bin tree
-    Item *addItem = library->retrieveItem(currentItem);
-    if (currentPatron == nullptr || currentItem == nullptr)
+    retrievedItem = library->retrieveItem(currentItem);
+    if (retrievedPatron == nullptr || retrievedItem == nullptr)
     {
         return false;
     }
-    if (!currentItem->checkOut()) // checks if item available, updates count
+    retrievedItem->print(cout);
+    if (!retrievedItem->checkOut()) // checks if item available, updates count
     {
         return false;
     }
-    currentPatron->checkOutItem(addItem);        // adds item to patron's books
-    currentPatron->updateHistory(this, addItem); // adds checkout to history
+    retrievedPatron->checkOutItem(retrievedItem); // adds item to patron's books
+    retrievedPatron->updateHistory(this);         // adds checkout to history
     return true;
+}
+
+void CheckOut::display() const
+{
+
+    cout << "Checkout  ";
 }

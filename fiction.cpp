@@ -102,6 +102,15 @@ void Fiction::print(ostream &out) const
 }
 
 //---------------------------------------------------------------------------
+// individualPrint
+// prints individual book's description
+void Fiction::individualPrint() const
+{
+    const Fiction &fiction = static_cast<const Fiction &>(*this);
+    cout << setw(20) << fiction.authorName << "    " << setw(15) << fiction.title << "    " << setw(4) << fiction.year << endl;
+}
+
+//---------------------------------------------------------------------------
 // operator
 // Overloaded comparison operators
 bool Fiction::operator==(const Item &other) const

@@ -9,7 +9,7 @@ NodeData::~NodeData() { delete data; } // needed so strings are deleted properly
 
 NodeData::NodeData(const NodeData &nd) { data = nd.data; } // copy
 
-NodeData::NodeData(Item *i) { data = i; } // cast string to NodeData
+NodeData::NodeData(Item *i) { data = i; } // set item as data
 
 //----------------------------------------------------------------------------
 // print
@@ -22,6 +22,8 @@ void NodeData::print(ostream &cout) const
 // returns item data as pointer
 Item *NodeData::returnData() const
 {
+    // cout << yo << endl;
+    // data->print(cout);
     return data;
 }
 
