@@ -7,15 +7,12 @@
 #ifndef ACTIONFACTORY_H
 #define ACTIONFACTORY_H
 
-#include "action.h"
-#include "checkout.h"
-#include "return.h"
-#include "history.h"
+class Action;
 
 class ActionFactory
 {
 private:
-    Action *objFactory[10];  // contains array of each object
+    Action *objFactory[26];  // contains array of each object
     int hash(char ch) const; // hash function
 
 public:

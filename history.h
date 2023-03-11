@@ -11,21 +11,30 @@
 #include "library.h"
 #include "action.h"
 
+class ItemFactory;
+
 class History : public Action
 {
-private:
+protected:
+    int currentID;
+
 public:
     // Constructor
-    History();
+    History(){};
 
     // Destructor
-    virtual ~History();
+    virtual ~History(){};
 
     // creates an action pointer to an object of the history class
     virtual Action *create() const;
 
+    virtual bool setData(ifstream &inputFile, ItemFactory *itemFac);
+
     // displays a given user's transaction history
-    virtual bool execute();
+    virtual bool execute(Library *library);
+
+    // displays the type of action it is
+    virtual void display() const;
 };
 
 #endif

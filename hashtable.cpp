@@ -45,5 +45,9 @@ void HashTable::display() const
 
 Patron *HashTable::retrieveUser(int id) const
 {
+    if (id < 0 || id > 9999)
+    {
+        return nullptr;
+    }
     return patronTable[id];
 }

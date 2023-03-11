@@ -13,14 +13,12 @@ Action *CheckOut::create() const
 
 bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
 {
-    string dummy;   // used in final getLine to move inputFile to next line
     char itemType;  // takes in item type
     char coverType; // takes in cover type
 
     inputFile >> currentID;
     if (currentID < 0 || currentID > 9999) // checks if id is valid
     {
-        getline(inputFile, dummy, '\n');
         return false;
     }
     inputFile >> itemType;
@@ -28,17 +26,14 @@ bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
     if (coverType != 'H') // validates book cover type
     {
         cout << "Invalid cover type" << endl;
-        getline(inputFile, dummy, '\n');
         return false;
     }
     tempItem = itemFac->createIt(itemType);
     if (tempItem == nullptr) // if invalid book type, return false
     {
-        getline(inputFile, dummy, '\n');
         return false;
     }
     tempItem->setDataCommand(inputFile); // sets item's data
-    getline(inputFile, dummy, '\n');     // skips to next line
     return true;
 }
 
@@ -66,7 +61,6 @@ bool CheckOut::execute(Library *library) // delete command if no success
 
 void CheckOut::display() const
 {
-
     cout << "Checkout  ";
     currentItem->individualPrint();
 }

@@ -4,6 +4,7 @@
  **/
 
 #include "patron.h"
+#include "action.h"
 #include "item.h"
 
 void Patron::setData(ifstream &inputFile)
@@ -73,4 +74,20 @@ bool Patron::returnItem(Item *item)
 void Patron::updateHistory(Action *addAction)
 {
     history.push_back(addAction);
+}
+
+void Patron::viewHistory() const
+{
+    if (history.size() == 0)
+    {
+        cout << "Patron has no history of transactions" << endl;
+    }
+    else
+    {
+        cout << "Patron's history:" << endl;
+        for (int i = 0; i < history.size(); i++)
+        {
+            history[i]->display();
+        }
+    }
 }

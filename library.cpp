@@ -7,7 +7,9 @@
 
 #include "library.h"
 #include "itemfactory.h"
+#include "actionfactory.h"
 #include "item.h"
+#include "action.h"
 #include "itemcontainer.h"
 #include "hashtable.h"
 #include "patron.h"
@@ -18,8 +20,9 @@ using namespace std;
 Library::Library()
 {
     itemContain = new ItemContainer();
-    itemFac = new ItemFactory();
     userTable = new HashTable();
+    itemFac = new ItemFactory();
+    actionFac = new ActionFactory();
 }
 
 Library::~Library()
@@ -38,11 +41,8 @@ void Library::readItems()
     }
     char itemType;
     // for each line in txt file, call setData
-    int i = 0;
     while (true)
     {
-        cout << i << endl;
-        i++;
         inputFile >> itemType;
         if (inputFile.eof())
             break;
@@ -50,7 +50,6 @@ void Library::readItems()
         if (currentItem != nullptr)
         {
             currentItem->setData(inputFile);
-            currentItem->print(cout);
             itemContain->addItem(itemType, currentItem);
         }
         string dummy;
@@ -86,6 +85,7 @@ void Library::readUsers()
         {
             Patron *currentPatron = new Patron();
             currentPatron->setData(inputFile);
+            // insert deletes currentPatron if invalid ID or duplicate
             userTable->insert(currentPatron->getId(), currentPatron);
         }
     }
@@ -100,20 +100,45 @@ void Library::readActions()
     {
         cout << "File could not be opened." << endl;
     }
-    bool endOfFile = false;
-    while (!endOfFile)
+    char commandType;
+    // for each line in txt file, call setData
+    while (true)
     {
-        char dummy = inputFile.peek();
+        inputFile >> commandType;
+        cout << commandType << endl; // RENRIENNIRNIERINRENINIERNIRNIERNIfdsfdsf
         if (inputFile.eof())
         {
-            endOfFile = true;
+            break;
         }
-        if (!endOfFile)
+        Action *currentAction = actionFac->createIt(commandType);
+        // if a valid command type
+        if (currentAction == nullptr)
+            cout << "actions nullptr" << endl;
+        if (currentAction != nullptr)
         {
-            Patron *currentPatron = new Patron();
-            currentPatron->setData(inputFile);
-            userTable->insert(currentPatron->getId(), currentPatron);
+            cout << "about to setData" << endl;
+            // if valid data
+            if (currentAction->setData(inputFile, itemFac))
+            {
+                cout << "setData valid" << endl;
+                // if execution failed. deletes invalid checkouts and returns,
+                // deletes all history and displays
+                if (!currentAction->execute(this))
+                {
+                    cout << "execute failed" << endl;
+                    delete currentAction;
+                    currentAction = nullptr;
+                }
+            }
+            else // if invalid data
+            {
+                cout << "setData failed" << endl;
+                delete currentAction;
+                currentAction = nullptr;
+            }
         }
+        string dummy;
+        getline(inputFile, dummy, '\n');
     }
     inputFile.close();
 }

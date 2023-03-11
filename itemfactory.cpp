@@ -8,10 +8,9 @@
 #include "childrenbook.h"
 #include "fiction.h"
 #include "periodical.h"
+#include "item.h" // unsure if include
 #include <iostream>
 using namespace std;
-
-class Item;
 
 ItemFactory::ItemFactory()
 {

@@ -22,7 +22,7 @@ public:
     // Factory destructor, deletes objFactory
     ~ItemFactory();
 
-    // Creates a corresponding action based on the information provided
+    // Creates a corresponding item based on the information provided
     Item *createIt(char c) const;
 };
 

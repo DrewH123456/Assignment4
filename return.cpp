@@ -13,14 +13,12 @@ Action *Return::create() const
 
 bool Return::setData(ifstream &inputFile, ItemFactory *itemFac)
 {
-    string dummy;   // used in final getLine to move inputFile to next line
     char itemType;  // takes in item type
     char coverType; // takes in cover type
 
     inputFile >> currentID;
     if (currentID < 0 || currentID > 9999) // checks if id is valid
     {
-        getline(inputFile, dummy, '\n');
         return false;
     }
     inputFile >> itemType;
@@ -28,17 +26,15 @@ bool Return::setData(ifstream &inputFile, ItemFactory *itemFac)
     if (coverType != 'H') // validates book cover type
     {
         cout << "Invalid cover type" << endl;
-        getline(inputFile, dummy, '\n');
         return false;
     }
     tempItem = itemFac->createIt(itemType);
     if (tempItem == nullptr) // if invalid book type, return false
     {
-        getline(inputFile, dummy, '\n');
         return false;
     }
     tempItem->setDataCommand(inputFile); // sets item's data
-    getline(inputFile, dummy, '\n');     // skips to next line
+
     return true;
 }
 
@@ -54,7 +50,6 @@ bool Return::execute(Library *library) // delete command if no success
     {
         return false;
     }
-    currentItem->print(cout);
     if (!retrievedPatron->returnItem(currentItem))
     {
         cout << "Item not found in patron's borrowed items collection" << endl;
@@ -62,6 +57,7 @@ bool Return::execute(Library *library) // delete command if no success
     }
     currentItem->returnItem();            // increments items inventory
     retrievedPatron->updateHistory(this); // adds checkout to history
+    cout << "execute worked" << endl;
     return true;
 }
 

@@ -6,11 +6,9 @@
 #ifndef CHECKOUT_H
 #define CHECKOUT_H
 
-#include "patron.h"
-#include "book.h"
-#include "library.h"
 #include "action.h"
 
+class Library;
 class ItemFactory;
 
 class CheckOut : public Action
