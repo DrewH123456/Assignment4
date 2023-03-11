@@ -1,17 +1,17 @@
 /*
- * This is a child class of action, overriding the execute function to check
- * out a book for a user
+ * This is a child class of action, overriding the execute function to return
+ * a book for a user
  */
 
-#include "checkout.h"
+#include "return.h"
 #include "itemfactory.h"
 
-Action *CheckOut::create() const
+Action *Return::create() const
 {
-    return new CheckOut();
+    return new Return();
 }
 
-bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
+bool Return::setData(ifstream &inputFile, ItemFactory *itemFac)
 {
     string dummy;   // used in final getLine to move inputFile to next line
     char itemType;  // takes in item type
@@ -42,7 +42,7 @@ bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
     return true;
 }
 
-bool CheckOut::execute(Library *library) // delete command if no success
+bool Return::execute(Library *library) // delete command if no success
 {
     // uses currentID to assign patron item to matching patron found in h-table
     Patron *retrievedPatron = library->retrieveUser(currentID);
@@ -54,19 +54,19 @@ bool CheckOut::execute(Library *library) // delete command if no success
     {
         return false;
     }
-    if (!currentItem->checkOut()) // checks if item available, updates count
+    currentItem->print(cout);
+    if (!retrievedPatron->returnItem(currentItem))
     {
-        cout << "can't check out this item" << endl;
+        cout << "Item not found in patron's borrowed items collection" << endl;
         return false;
     }
-    retrievedPatron->checkOutItem(currentItem); // adds item to patron's books
-    retrievedPatron->updateHistory(this);       // adds checkout to history
+    currentItem->returnItem();            // increments items inventory
+    retrievedPatron->updateHistory(this); // adds checkout to history
     return true;
 }
 
-void CheckOut::display() const
+void Return::display() const
 {
-
-    cout << "Checkout  ";
+    cout << "Return    ";
     currentItem->individualPrint();
 }

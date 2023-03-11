@@ -16,9 +16,9 @@ class ItemFactory;
 class CheckOut : public Action
 {
 protected:
-    int currentID;                 // id number of patron being acted on
-    Item *currentItem;             // item containing data of book being acted on
-    Item *retrievedItem = nullptr; // item retrieved from library's bintree
+    int currentID;               // id number of patron being acted on
+    Item *tempItem;              // temp item storing partial info
+    Item *currentItem = nullptr; // item retrieved from library's bintree
 
 public:
     // Constructor
@@ -30,16 +30,13 @@ public:
     // creates an action pointer to an object of the checkOut class
     virtual Action *create() const;
 
-    bool setData(ifstream &inputFile, ItemFactory *itemFac);
-
-    // // checks out a given book for a given user
-    // virtual bool execute(Library *library);
+    virtual bool setData(ifstream &inputFile, ItemFactory *itemFac);
 
     // checks out a given book for a given user
-    bool execute(Library *library);
+    virtual bool execute(Library *library);
 
     // displays the type of action it is
-    void display() const;
+    virtual void display() const;
 };
 
 #endif

@@ -45,11 +45,11 @@ public:
     // Returns the first name of the patron
     string getFirstName() const;
 
-    // Adds a book to the list of books checked out by the patron
+    // Adds a item to the list of items checked out by the patron
     void checkOutItem(Item *item);
 
-    // Removes a book from the list of books checked out by the patron
-    void returnBook(Item *item);
+    // Removes a item from the list of items checked out by the patron
+    bool returnItem(Item *item);
 
     // Displays the checkout history for the patron
     void viewHistory() const;

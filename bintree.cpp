@@ -1,5 +1,5 @@
 #include "bintree.h"
-#include "nodedata.h"
+#include "item.h"
 #include <string>
 
 //----------------------------------------------------------------
@@ -30,26 +30,26 @@ void BinTree::printBSTreeHelper(Node *current) const
 // operator <<
 // print the elements of the tree in in-order traversal.
 //----------------------------------------------------------------
-ostream &operator<<(ostream &output, const BinTree &tree)
-{
-   tree.inorderHelper(tree.root);
-   output << endl;
-   return output;
-}
+// ostream &operator<<(ostream &output, const BinTree &tree)
+// {
+//    tree.inorderHelper(tree.root);
+//    output << endl;
+//    return output;
+// }
 
 //----------------------------------------------------------------
 // inorderHelper
 // used to recursively traverse the tree and print the elements.
 //----------------------------------------------------------------
-void BinTree::inorderHelper(Node *current) const
-{
+// void BinTree::inorderHelper(Node *current) const
+// {
 
-   if (current == nullptr)
-      return;
-   inorderHelper(current->left);
-   cout << *(current->data) << " ";
-   inorderHelper(current->right);
-}
+//    if (current == nullptr)
+//       return;
+//    inorderHelper(current->left);
+//    cout << *(current->data) << " ";
+//    inorderHelper(current->right);
+// }
 
 //----------------------------------------------------------------
 // Constructor
@@ -62,58 +62,58 @@ BinTree::BinTree() : root(nullptr) {}
 // overload the assignment operator
 // make a current tree empty then make a deep copy the new tree
 //----------------------------------------------------------------
-BinTree &BinTree::operator=(const BinTree &other)
-{
-   if (this != &other)
-   {
-      // free the memory allocated
-      makeEmpty();
-      if (other.root == nullptr)
-      {
-         root = nullptr;
-      }
-      else
-      {
-         root = new Node();
-         root->left = root->right = nullptr;
-         // Deep copy the data
-         root->data = new NodeData(*other.root->data);
-         copyHelper(root, other.root);
-      }
-   }
-   return *this;
-}
+// BinTree &BinTree::operator=(const BinTree &other)
+// {
+//    if (this != &other)
+//    {
+//       // free the memory allocated
+//       makeEmpty();
+//       if (other.root == nullptr)
+//       {
+//          root = nullptr;
+//       }
+//       else
+//       {
+//          root = new Node();
+//          root->left = root->right = nullptr;
+//          // Deep copy the data
+//          root->data = new Item(*other.root->data);
+//          copyHelper(root, other.root);
+//       }
+//    }
+//    return *this;
+// }
 
 //----------------------------------------------------------------
 // Copy constructor
 // set the root to nullptr and copy using the assignment operator
 //----------------------------------------------------------------
-BinTree::BinTree(const BinTree &other)
-{
-   this->root = nullptr;
-   *this = other;
-}
+// BinTree::BinTree(const BinTree &other)
+// {
+//    this->root = nullptr;
+//    *this = other;
+// }
 
 //----------------------------------------------------------------
 // copy helper methods
 // helper methods use for copy constructor and assignment operator
 // recursively copy the elements of the tree
 //----------------------------------------------------------------
-void BinTree::copyHelper(Node *newTree, Node *otherTree)
-{
-   if (otherTree->left != nullptr)
-   {
-      newTree->left = new Node();
-      newTree->left->data = new NodeData(*otherTree->left->data);
-      copyHelper(newTree->left, otherTree->left);
-   }
-   if (otherTree->right != nullptr)
-   {
-      newTree->right = new Node();
-      newTree->right->data = new NodeData(*otherTree->right->data);
-      copyHelper(newTree->right, otherTree->right);
-   }
-}
+// void BinTree::copyHelper(Node *newTree, Node *otherTree)
+// {
+//    if (otherTree->left != nullptr)
+//    {
+//       newTree->left = new Node();
+//       newTree->left->data = new Item(*otherTree->left->data);
+//       copyHelper(newTree->left, otherTree->left);
+//    }
+//    if (otherTree->right != nullptr)
+//    {
+//       newTree->right = new Node();
+//       newTree->right->data = new Item(*otherTree->right->data);
+//       copyHelper(newTree->right, otherTree->right);
+//    }
+// }
 
 //----------------------------------------------------------------
 // helper methods for destructor methods
@@ -174,44 +174,14 @@ void printBSTree()
 //----------------------------------------------------------------
 // retrieve()
 // retrieve the give node data
-//----------------------------------------------------------------
-// bool BinTree::retrieve(const NodeData &nd, NodeData *&foundNode) const
-// {
-//    Node *current = root; // start at the root of the tree
-//    while (current != nullptr)
-//    {
-//       cout << "ayo" << endl;
-//       // Compare the search data with the current node's data
-//       if (*(current->data) == nd)
-//       {
-//          cout << "equals" << endl;
-//          // If a match is found,
-//          // store the current node's data in the foundNode pointer
-//          foundNode = current->data;
-//          return true;
-//       }
-//       else if (*(current->data) < nd)
-//       {
-//          cout << "right" << endl;
-//          current = current->right; // search the right subtree
-//       }
-//       else
-//       {
-//          cout << "left" << endl;
-//          current = current->left; // search the left subtree
-//       }
-//    }
-//    return false; // if the node is not found, return false
-// }
-
-bool BinTree::retrieve(const NodeData &itemLookingFor, NodeData *&foundItem) const
+bool BinTree::retrieve(const Item &itemLookingFor, Item *&foundItem) const
 {
    foundItem = nullptr;
    return retrieveHelper(root, itemLookingFor, foundItem);
 }
 
-bool BinTree::retrieveHelper(const Node *current, const NodeData &target,
-                             NodeData *&foundItem) const
+bool BinTree::retrieveHelper(const Node *current, const Item &target,
+                             Item *&foundItem) const
 {
    if (current == nullptr)
    {
@@ -314,7 +284,7 @@ bool BinTree::operator<(const BinTree &other) const
 // finds the sibling of a given NodeData
 // by searching the tree and checking the left and right child
 //----------------------------------------------------------------
-bool BinTree::getSibling(const NodeData &nd, NodeData &sibling) const
+bool BinTree::getSibling(const Item &nd, Item &sibling) const
 {
    Node *current = root;   // start at the root of the tree
    Node *parent = nullptr; // variable to store the parent of the current node
@@ -365,7 +335,7 @@ bool BinTree::getSibling(const NodeData &nd, NodeData &sibling) const
 // getParent finds the parent of a given NodeData by searching the tree
 // and keeping track of the parent node.
 // It returns false if the node has no parent.
-bool BinTree::getParent(const NodeData &nd, NodeData &parent) const
+bool BinTree::getParent(const Item &nd, Item &parent) const
 {
    Node *current = root;       // start at the root of the tree
    Node *parentNode = nullptr; // keep track of the parent node
@@ -406,14 +376,14 @@ bool BinTree::getParent(const NodeData &nd, NodeData &parent) const
 // The method leaves the tree empty after it is done
 // traversing through the tree and filling the array.
 //
-void BinTree::bstreeToArray(NodeData *ndArray[])
+void BinTree::bstreeToArray(Item *ndArray[])
 {
    int i = 0;
    bstreeToArrayHelper(root, ndArray, i);
    makeEmpty(); // Clear the tree
 }
 
-void BinTree::bstreeToArrayHelper(Node *current, NodeData *ndArray[], int &index)
+void BinTree::bstreeToArrayHelper(Node *current, Item *ndArray[], int &index)
 {
    if (current == nullptr)
       return;
@@ -430,7 +400,7 @@ void BinTree::bstreeToArrayHelper(Node *current, NodeData *ndArray[], int &index
 // to build a balanced binary search tree (BST)
 // from a sorted array of NodeData*, leave the array with nullptr
 //----------------------------------------------------------------
-void BinTree::arrayToBSTree(NodeData *arr[])
+void BinTree::arrayToBSTree(Item *arr[])
 {
    makeEmpty();
    int n = 0;
@@ -446,7 +416,7 @@ void BinTree::arrayToBSTree(NodeData *arr[])
 // help  to build a balanced binary search tree (BST)
 // from a sorted array of NodeData*, leave the array with nullptr
 //----------------------------------------------------------------
-BinTree::Node *BinTree::arrayToBSTreeHelper(NodeData *sortedArray[], int low, int high)
+BinTree::Node *BinTree::arrayToBSTreeHelper(Item *sortedArray[], int low, int high)
 {
    // checks if the low index is greater than the high index,
    // if it is, it returns a nullptr
@@ -470,30 +440,30 @@ BinTree::Node *BinTree::arrayToBSTreeHelper(NodeData *sortedArray[], int low, in
 // Displays a binary tree as though you are viewing it from the side.
 // Turn head 90 degrees counterclockwise (to the left) to see tree structure.
 // Hard coded displaying to standard output.
-void BinTree::displaySideways() const
-{
-   sidewaysHelper(root, 0);
-}
+// void BinTree::displaySideways() const
+// {
+//    sidewaysHelper(root, 0);
+// }
 
-void BinTree::sidewaysHelper(Node *current, int level) const
-{
-   if (current != nullptr)
-   {
-      level++;
-      sidewaysHelper(current->right, level);
+// void BinTree::sidewaysHelper(Node *current, int level) const
+// {
+//    if (current != nullptr)
+//    {
+//       level++;
+//       sidewaysHelper(current->right, level);
 
-      // indent for readability, same number of spaces per depth level
-      for (int i = level; i >= 0; i--)
-      {
-         cout << "        ";
-      }
+//       // indent for readability, same number of spaces per depth level
+//       for (int i = level; i >= 0; i--)
+//       {
+//          cout << "        ";
+//       }
 
-      cout << *current->data << endl; // display information of object
-      sidewaysHelper(current->left, level);
-   }
-}
+//       cout << *current->data << endl; // display information of object
+//       sidewaysHelper(current->left, level);
+//    }
+// }
 
-bool BinTree::insert(NodeData *dataptr)
+bool BinTree::insert(Item *dataptr)
 {
    // Create a new node with the given data pointer
    Node *newNode = new Node();
@@ -510,6 +480,10 @@ bool BinTree::insert(NodeData *dataptr)
    // Start at the root of the tree
    Node *current = root;
    // while true, find the correct spot
+   // if (newNode->data == current->data)
+   // {
+   //    cout << "YOO" << endl;
+   // }
    while (true)
    {
       if (*newNode->data == *current->data)
@@ -549,12 +523,12 @@ bool BinTree::insert(NodeData *dataptr)
    }
 }
 
-bool BinTree::remove(const NodeData &target, NodeData *&item)
+bool BinTree::remove(const Item &target, Item *&item)
 {
    return removeHelper(root, target, item);
 }
 
-bool BinTree::removeHelper(Node *&current, const NodeData &target, NodeData *&item)
+bool BinTree::removeHelper(Node *&current, const Item &target, Item *&item)
 {
    if (current == nullptr)
    {
@@ -576,7 +550,7 @@ bool BinTree::removeHelper(Node *&current, const NodeData &target, NodeData *&it
    return removeHelper(current->right, target, item);
 }
 
-void BinTree::deleteCurrent(Node *&current, NodeData *&item)
+void BinTree::deleteCurrent(Node *&current, Item *&item)
 {
    // current has no children
    if (current->left == nullptr && current->right == nullptr)
@@ -650,11 +624,11 @@ void BinTree::deleteCurrent(Node *&current, NodeData *&item)
 //---------------------------------------------------------------------------//
 // findAndDeleteJustBigger
 // Pre-condition: current is not nullptr
-NodeData *BinTree::findAndDeleteJustBigger(Node *&current)
+Item *BinTree::findAndDeleteJustBigger(Node *&current)
 {
    if (current->left == nullptr)
    {
-      NodeData *item = current->data;
+      Item *item = current->data;
       Node *junk = current;
       current = current->right;
       delete junk;

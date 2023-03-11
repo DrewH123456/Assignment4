@@ -50,6 +50,7 @@ void Library::readItems()
         if (currentItem != nullptr)
         {
             currentItem->setData(inputFile);
+            currentItem->print(cout);
             itemContain->addItem(itemType, currentItem);
         }
         string dummy;
@@ -73,6 +74,32 @@ void Library::readUsers()
         cout << "File could not be opened." << endl;
     }
     // for each line in txt file, call setData
+    bool endOfFile = false;
+    while (!endOfFile)
+    {
+        char dummy = inputFile.peek();
+        if (inputFile.eof())
+        {
+            endOfFile = true;
+        }
+        if (!endOfFile)
+        {
+            Patron *currentPatron = new Patron();
+            currentPatron->setData(inputFile);
+            userTable->insert(currentPatron->getId(), currentPatron);
+        }
+    }
+    inputFile.close();
+}
+
+void Library::readActions()
+{
+    string fileName = "data4commands.txt";
+    ifstream inputFile(fileName);
+    if (!inputFile)
+    {
+        cout << "File could not be opened." << endl;
+    }
     bool endOfFile = false;
     while (!endOfFile)
     {

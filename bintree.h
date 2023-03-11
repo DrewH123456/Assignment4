@@ -12,8 +12,9 @@
 #define BINTREE_H
 #include <iostream>
 #include <string>
-#include "nodedata.h"
 using namespace std;
+
+class Item;
 
 class BinTree
 {
@@ -43,35 +44,35 @@ public:
     bool operator<(const BinTree &) const;
     bool operator!=(const BinTree &) const;
     // insert a new node to the tree
-    bool insert(NodeData *);
+    bool insert(Item *);
     // retrieve the node data
-    bool retrieve(const NodeData &, NodeData *&) const;
+    bool retrieve(const Item &, Item *&) const;
     // remove a node from the tree
     // Remove have 3 case, when no child, 1 child and 2 childs
-    bool remove(const NodeData &, NodeData *&);
+    bool remove(const Item &, Item *&);
     void displaySideways() const; // displays the tree sideways, root is leftmost
     // get the sibling nodes
-    bool getSibling(const NodeData &, NodeData &) const;
+    bool getSibling(const Item &, Item &) const;
     // get the parent nodes
-    bool getParent(const NodeData &, NodeData &) const;
+    bool getParent(const Item &, Item &) const;
     // turn bstree to array
-    void bstreeToArray(NodeData *[]);
+    void bstreeToArray(Item *[]);
     // turn array to bstree
-    void arrayToBSTree(NodeData *[]);
+    void arrayToBSTree(Item *[]);
     // print bstree
     void printBSTree() const;
 
 private:
     struct Node
     {
-        NodeData *data; // pointer to data object
-        Node *left;     // left subtree pointer
-        Node *right;    // right subtree pointer
+        Item *data;  // pointer to data object
+        Node *left;  // left subtree pointer
+        Node *right; // right subtree pointer
     };
     Node *root; // root of the tree
 
-    bool retrieveHelper(const Node *current, const NodeData &target,
-                        NodeData *&foundItem) const;
+    bool retrieveHelper(const Node *current, const Item &target,
+                        Item *&foundItem) const;
 
     // utility functions
     // printBSTree helper
@@ -87,15 +88,15 @@ private:
     // isEmpty helper method
     bool isEqual(Node *, Node *) const;
     // bstreeToArray Helper
-    void bstreeToArrayHelper(Node *current, NodeData *ndArray[], int &index);
+    void bstreeToArrayHelper(Node *current, Item *ndArray[], int &index);
     // arrayToBSTree Helper
-    Node *arrayToBSTreeHelper(NodeData *sortedArray[], int low, int high);
+    Node *arrayToBSTreeHelper(Item *sortedArray[], int low, int high);
     // remove helper method
-    bool removeHelper(Node *&current, const NodeData &target, NodeData *&item);
+    bool removeHelper(Node *&current, const Item &target, Item *&item);
     // delete helper
-    void deleteCurrent(Node *&current, NodeData *&);
+    void deleteCurrent(Node *&current, Item *&);
     // remove helper
-    NodeData *findAndDeleteJustBigger(Node *&current);
+    Item *findAndDeleteJustBigger(Node *&current);
     // printBSTree helper
 };
 #endif

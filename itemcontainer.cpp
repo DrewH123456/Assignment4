@@ -5,7 +5,7 @@
  */
 
 #include "itemcontainer.h"
-#include "nodedata.h"
+#include "item.h"
 #include <unordered_map>
 using namespace std;
 
@@ -36,8 +36,7 @@ void ItemContainer::removeTree(char ch)
 
 void ItemContainer::addItem(char ch, Item *addItem)
 {
-    NodeData *data = new NodeData(addItem);
-    itemTrees.at(ch)->insert(data);
+    itemTrees.at(ch)->insert(addItem);
 }
 
 void ItemContainer::printTrees() const
@@ -51,15 +50,14 @@ void ItemContainer::printTrees() const
     }
 }
 
-Item *ItemContainer::retrieveItem(Item *retrieveObj) const
+Item *ItemContainer::retrieveItem(Item *compareToObj) const
 {
-    char itemType = retrieveObj->returnItemType();
-    NodeData search(retrieveObj);
-    NodeData *retrieve = nullptr;
-    itemTrees.at(itemType)->retrieve(search, retrieve);
+    char itemType = compareToObj->returnItemType();
+    Item *retrieve = nullptr;
+    itemTrees.at(itemType)->retrieve(*compareToObj, retrieve);
     if (retrieve == nullptr)
     {
         return nullptr;
     }
-    return retrieve->returnData();
+    return retrieve;
 }

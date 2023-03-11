@@ -71,13 +71,10 @@ Item *Periodical::create() const
 // sets item's data using info from line in infile
 void Periodical::setData(ifstream &inputFile)
 {
-    string dummy; // used in final getLine to move inputFile to next line
-
     inputFile.get();
     getline(inputFile, title, ',');
     inputFile >> month;
     inputFile >> year;
-    getline(inputFile, dummy, '\n');
 }
 
 //---------------------------------------------------------------------------

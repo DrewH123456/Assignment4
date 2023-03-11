@@ -11,21 +11,32 @@
 #include "library.h"
 #include "action.h"
 
+class ItemFactory;
+
 class Return : public Action
 {
-private:
+protected:
+    int currentID;               // id number of patron being acted on
+    Item *tempItem;              // item containing data of book being acted on
+    Item *currentItem = nullptr; // item retrieved from library's bintree
+
 public:
     // Constructor
-    Return();
+    Return(){};
 
     // Destructor
-    virtual ~Return();
+    virtual ~Return(){};
 
     // creates an action pointer to an object of the return class
     virtual Action *create() const;
 
+    bool setData(ifstream &inputFile, ItemFactory *itemFac);
+
     // returns a given book for a given user
-    virtual bool execute();
+    virtual bool execute(Library *library);
+
+    // displays the type of action it is
+    virtual void display() const;
 };
 
 #endif

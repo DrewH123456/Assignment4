@@ -56,6 +56,20 @@ void Patron::checkOutItem(Item *addItem)
     checkedOutItems.push_back(addItem);
 }
 
+// Removes a item from the list of items checked out by the patron
+bool Patron::returnItem(Item *item)
+{
+    for (int i = 0; i < checkedOutItems.size(); i++)
+    {
+        if (item == checkedOutItems[i])
+        {
+            checkedOutItems.erase(checkedOutItems.begin() + i);
+            return true;
+        }
+    }
+    return false;
+}
+
 void Patron::updateHistory(Action *addAction)
 {
     history.push_back(addAction);
