@@ -29,7 +29,7 @@ public:
     Patron(){};
 
     // Destructor
-    ~Patron(){};
+    ~Patron();
 
     // sets item's data using info from line in infile
     void setData(ifstream &inputFile);

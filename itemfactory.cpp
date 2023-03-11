@@ -27,8 +27,11 @@ ItemFactory::~ItemFactory()
     {
         for (int i = 0; i < 26; i++)
         {
-            delete objFactory[i];
-            objFactory[i] = nullptr;
+            if (objFactory != nullptr)
+            {
+                delete objFactory[i];
+                objFactory[i] = nullptr;
+            }
         }
     }
 }

@@ -9,6 +9,17 @@
 #include <iostream>
 using namespace std;
 
+HashTable::~HashTable()
+{
+    for (int i = 0; i < 10000; i++)
+    {
+        if (patronTable[i] != nullptr)
+        {
+            delete patronTable[i];
+        }
+    }
+}
+
 bool HashTable::insert(int id, Patron *patron)
 {
     if (id > 9999 || id < 0)

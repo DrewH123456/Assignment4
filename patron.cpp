@@ -7,6 +7,15 @@
 #include "action.h"
 #include "item.h"
 
+Patron::~Patron()
+{
+    for (int i = 0; i < history.size(); i++)
+    {
+        delete history[i];
+        history[i] = nullptr;
+    }
+};
+
 void Patron::setData(ifstream &inputFile)
 {
     string dummy; // used in final getLine to move inputFile to next line

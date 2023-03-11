@@ -16,7 +16,7 @@ int main()
     l->readItems();
     l->readUsers();
     l->readActions();
-
+    delete l;
     // CheckOut *c = new CheckOut();
     // ItemFactory *i = new ItemFactory();
     // ifstream inputFile;

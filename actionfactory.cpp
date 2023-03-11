@@ -29,8 +29,11 @@ ActionFactory::~ActionFactory()
     {
         for (int i = 0; i < 26; i++)
         {
-            delete objFactory[i];
-            objFactory[i] = nullptr;
+            if (objFactory[i] != nullptr)
+            {
+                delete objFactory[i];
+                objFactory[i] = nullptr;
+            }
         }
     }
 }

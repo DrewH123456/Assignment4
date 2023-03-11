@@ -18,6 +18,8 @@ private:
     Patron *patronTable[10000]{nullptr};
 
 public:
+    ~HashTable();
+
     // HashTable functions
     bool insert(int key, Patron *value);
     // int hash(int id) const; // hash function

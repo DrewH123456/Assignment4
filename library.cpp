@@ -28,6 +28,9 @@ Library::Library()
 Library::~Library()
 {
     delete itemContain;
+    delete userTable;
+    delete itemFac;
+    delete actionFac;
 }
 
 void Library::readItems()
