@@ -51,7 +51,6 @@ bool CheckOut::execute(Library *library) // delete command if no success
     }
     if (!currentItem->checkOut()) // checks if item available, updates count
     {
-        cout << "can't check out this item" << endl;
         return false;
     }
     retrievedPatron->checkOutItem(currentItem); // adds item to patron's books
