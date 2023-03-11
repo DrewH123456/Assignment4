@@ -54,6 +54,8 @@ public:
     // prints individual book info
     virtual void individualPrint() const;
 
+    virtual void printHeading() const;
+
     // Overloaded output operator
     // virtual ostream &operator<<(ostream &output, const Item &item) const;
 

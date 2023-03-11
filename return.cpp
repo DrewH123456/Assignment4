@@ -57,7 +57,6 @@ bool Return::execute(Library *library) // delete command if no success
     }
     currentItem->returnItem();            // increments items inventory
     retrievedPatron->updateHistory(this); // adds checkout to history
-    cout << "execute worked" << endl;
     return true;
 }
 

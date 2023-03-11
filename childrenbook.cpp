@@ -93,9 +93,10 @@ void ChildrenBook::setDataCommand(ifstream &inputFile)
 void ChildrenBook::print(ostream &out) const
 {
     const ChildrenBook &children = static_cast<const ChildrenBook &>(*this);
-    out << setw(5) << children.available << setw(15) << children.authorName
-        << setw(15) << children.title
-        << setw(10) << children.year << endl;
+    cout << "  " << setw(8) << left << children.available
+         << setw(25) << left << children.authorName
+         << setw(35) << left << children.title
+         << setw(10) << right << children.year << endl;
 }
 
 //---------------------------------------------------------------------------
@@ -103,10 +104,19 @@ void ChildrenBook::print(ostream &out) const
 // prints individual book's description
 void ChildrenBook::individualPrint() const
 {
-    const ChildrenBook &childrenBook = static_cast<const ChildrenBook &>(*this);
-    cout << setw(28) << "    " << childrenBook.title
-         << setw(15) << "    " << childrenBook.authorName
-         << setw(4) << childrenBook.year << endl;
+    const ChildrenBook &children = static_cast<const ChildrenBook &>(*this);
+    cout << left << setw(30) << title << "   " << setw(20) << left << authorName
+         << setw(5) << right << year << endl;
+    cout << endl;
+}
+
+void ChildrenBook::printHeading() const
+{
+    cout << "Children" << endl;
+    cout << setw(12) << left << "AVAIL"
+         << setw(25) << left << "AUTHOR"
+         << setw(35) << left << "TITLE"
+         << setw(8) << right << "YEAR" << endl;
 }
 
 //---------------------------------------------------------------------------

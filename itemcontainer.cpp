@@ -44,7 +44,6 @@ void ItemContainer::printTrees() const
     cout << "Displaying Items:" << endl;
     for (const auto &pair : itemTrees)
     {
-        cout << pair.first << endl;
         pair.second->printBSTree();
         cout << endl;
     }

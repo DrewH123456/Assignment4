@@ -48,8 +48,7 @@ public:
 
     virtual void individualPrint() const = 0;
 
-    // Overloaded output operator
-    // virtual ostream &operator<<(ostream &output, const Item &item) const = 0;
+    virtual void printHeading() const = 0;
 
     // Overloaded comparison operators
     virtual bool operator<(const Item &other) const = 0;

@@ -96,7 +96,10 @@ void Fiction::setDataCommand(ifstream &inputFile)
 void Fiction::print(ostream &out) const
 {
     const Fiction &fiction = static_cast<const Fiction &>(*this);
-    out << setw(5) << fiction.available << setw(15) << fiction.authorName << setw(15) << fiction.title << setw(10) << fiction.year << endl;
+    cout << "  " << setw(8) << left << fiction.available
+         << setw(25) << left << fiction.authorName
+         << setw(35) << left << fiction.title
+         << setw(10) << right << fiction.year << endl;
 }
 
 //---------------------------------------------------------------------------
@@ -105,7 +108,18 @@ void Fiction::print(ostream &out) const
 void Fiction::individualPrint() const
 {
     const Fiction &fiction = static_cast<const Fiction &>(*this);
-    cout << setw(20) << fiction.authorName << "    " << setw(15) << fiction.title << "    " << setw(4) << fiction.year << endl;
+    cout << left << setw(30) << title << "   " << setw(20) << left << authorName
+         << setw(5) << right << year << endl;
+    cout << endl;
+}
+
+void Fiction::printHeading() const
+{
+    cout << "Fiction:" << endl;
+    cout << setw(12) << left << "AVAIL"
+         << setw(25) << left << "AUTHOR"
+         << setw(35) << left << "TITLE"
+         << setw(8) << right << "YEAR" << endl;
 }
 
 //---------------------------------------------------------------------------

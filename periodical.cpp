@@ -94,8 +94,10 @@ void Periodical::setDataCommand(ifstream &inputFile)
 void Periodical::print(ostream &out) const
 {
     const Periodical &periodical = static_cast<const Periodical &>(*this);
-    out << setw(5) << periodical.available << setw(15) << "" << setw(25)
-        << periodical.title << setw(5) << periodical.month << setw(5) << periodical.year << endl;
+    cout << "  " << setw(8) << left << periodical.available << " "
+         << setw(12) << periodical.month
+         << setw(12) << periodical.year
+         << setw(40) << periodical.title << endl;
 }
 
 //---------------------------------------------------------------------------
@@ -104,15 +106,20 @@ void Periodical::print(ostream &out) const
 void Periodical::individualPrint() const
 {
     const Periodical &periodical = static_cast<const Periodical &>(*this);
-    cout << setw(3) << periodical.month << setw(6) << periodical.year << setw(70) << periodical.title << endl;
+    cout << setw(5) << left << periodical.month << setw(8)
+         << left << periodical.year << setw(40)
+         << left << periodical.title << endl;
+    cout << endl;
 }
 
-//---------------------------------------------------------------------------
-// operator<<
-// Overloaded output operator
-// virtual ostream &operator<<(ostream &output, const Item &item) const
-// {
-// }
+void Periodical::printHeading() const
+{
+    cout << "Periodical:" << endl;
+    cout << setw(9) << left << "AVAIL"
+         << setw(14) << left << "MONTH"
+         << setw(14) << left << "YEAR"
+         << setw(33) << left << "TITLE" << endl;
+}
 
 //---------------------------------------------------------------------------
 // operators

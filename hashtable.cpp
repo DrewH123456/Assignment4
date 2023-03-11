@@ -15,15 +15,15 @@ bool HashTable::insert(int id, Patron *patron)
     {
         delete patron;
         patron = nullptr;
-        cout << "Patron has an invalid ID" << endl;
-        cout << id << endl;
+        cout << id << " is an invalid ID" << endl;
+
         return false;
     }
     if (patronTable[id] != nullptr)
     {
         delete patron;
         patron = nullptr;
-        cout << "Patron with this id already inserted." << endl;
+        cout << "Patron with id: " << id << " already inserted." << endl;
         return false;
     }
     patronTable[id] = patron;

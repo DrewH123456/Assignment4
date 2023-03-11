@@ -105,34 +105,27 @@ void Library::readActions()
     while (true)
     {
         inputFile >> commandType;
-        cout << commandType << endl; // RENRIENNIRNIERINRENINIERNIRNIERNIfdsfdsf
         if (inputFile.eof())
         {
             break;
         }
         Action *currentAction = actionFac->createIt(commandType);
         // if a valid command type
-        if (currentAction == nullptr)
-            cout << "actions nullptr" << endl;
         if (currentAction != nullptr)
         {
-            cout << "about to setData" << endl;
             // if valid data
             if (currentAction->setData(inputFile, itemFac))
             {
-                cout << "setData valid" << endl;
                 // if execution failed. deletes invalid checkouts and returns,
                 // deletes all history and displays
                 if (!currentAction->execute(this))
                 {
-                    cout << "execute failed" << endl;
                     delete currentAction;
                     currentAction = nullptr;
                 }
             }
             else // if invalid data
             {
-                cout << "setData failed" << endl;
                 delete currentAction;
                 currentAction = nullptr;
             }

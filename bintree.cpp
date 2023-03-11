@@ -8,6 +8,10 @@
 //----------------------------------------------------------------
 void BinTree::printBSTree() const
 {
+   if (root != nullptr)
+   {
+      root->data->printHeading();
+   }
    printBSTreeHelper(root);
 }
 

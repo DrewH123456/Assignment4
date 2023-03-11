@@ -14,11 +14,8 @@ int main()
 {
     Library *l = new Library();
     l->readItems();
-    // l->displayItems();
     l->readUsers();
-    l->displayUsers();
     l->readActions();
-    l->displayUsers();
 
     // CheckOut *c = new CheckOut();
     // ItemFactory *i = new ItemFactory();
