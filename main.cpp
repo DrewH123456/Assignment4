@@ -6,11 +6,11 @@ using namespace std;
 
 int main()
 {
-    Library *l = new Library();
-    l->readItems();
-    l->readUsers();
-    l->readActions();
-    delete l;
+    Library *lib = new Library();
+    lib->readItems();
+    lib->readUsers();
+    lib->readActions();
+    delete lib;
 
     return 0;
 }

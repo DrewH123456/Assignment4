@@ -36,23 +36,29 @@ public:
     // Returns item type for given item
     virtual char returnItemType() const = 0;
 
-    // Checks out this item for a given user
+    // Checks out this item for a given user in a given library, first checking
+    // if available, then updating count, otherwise printing error message
     virtual bool checkOut() = 0;
 
     // Returns this item for a given user
     virtual void returnItem() = 0;
 
-    // Allows item factory to create an item
+    // Allows item factory to create an Item pointer to given book object
     virtual Item *create() const = 0;
 
+    // sets item's data using info from line in infile from data4books.txt
     virtual void setData(ifstream &inputFile) = 0;
 
+    // sets item's data using info from line in infile from data4commands.txt
     virtual void setDataCommand(ifstream &inputFile) = 0;
 
+    // prints book's description: available, author, title, year
     virtual void print(ostream &out) const = 0;
 
+    // prints individual book's description: title, author, year
     virtual void individualPrint() const = 0;
 
+    // prints heading for individual book description: title, author, year
     virtual void printHeading() const = 0;
 
     // Overloaded comparison operators

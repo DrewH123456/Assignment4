@@ -23,8 +23,10 @@ class Action;
 class ActionFactory
 {
 private:
-    Action *objFactory[26];  // contains array of each object
-    int hash(char ch) const; // hash function
+    Action *objFactory[26]; // contains array of each object
+    // hashes letter into index by subtracting 'A'. Error checks if
+    // letter in 'A-Z' range
+    int hash(char ch) const;
 
 public:
     // Constructs ActionFactory, and its objFactory array. Each action child
@@ -35,7 +37,7 @@ public:
     // Deletes all indexes of objFactory array that are not nullptr already.
     ~ActionFactory();
 
-    // translates character to index using hash(), searches for action within
+    // hashes character to index using hash(), searches for action within
     // objFactory array and returns instance of child action using create()
     Action *createIt(char c) const;
 };

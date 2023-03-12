@@ -1,16 +1,21 @@
-/*
- * This is a child class of action, overriding the execute function to return
- * a book for a user
- */
+// A Return allows a patron to return an item
+// Drew Higginbotham
 
 #include "return.h"
 #include "itemfactory.h"
 
+//----------------------------------------------------------------------------
+// create
+// allows actionFactory to create action pointer to Return object
 Action *Return::create() const
 {
     return new Return();
 }
 
+//----------------------------------------------------------------------------
+// setData
+// reads in data from data4commands.txt and assigns data members accordingly
+// error checks, returning false if invalid data
 bool Return::setData(ifstream &inputFile, ItemFactory *itemFac)
 {
     char itemType;  // takes in item type
@@ -38,6 +43,11 @@ bool Return::setData(ifstream &inputFile, ItemFactory *itemFac)
     return true;
 }
 
+//----------------------------------------------------------------------------
+// execute
+// returns a given item from a given user
+// Retrieves the patron and item being acted on from item and user container
+// Performs action on patron and item, and logs patron's history of commands
 bool Return::execute(Library *library) // delete command if no success
 {
     // uses currentID to assign patron item to matching patron found in h-table
@@ -46,10 +56,12 @@ bool Return::execute(Library *library) // delete command if no success
     currentItem = library->retrieveItem(tempItem);
     delete tempItem;
     tempItem = nullptr;
+    // if patron or item not found
     if (retrievedPatron == nullptr || currentItem == nullptr)
     {
         return false;
     }
+    // if patron does not own the item
     if (!retrievedPatron->returnItem(currentItem))
     {
         cout << "Item not found in patron's borrowed items collection" << endl;
@@ -60,7 +72,9 @@ bool Return::execute(Library *library) // delete command if no success
     return true;
 }
 
-void Return::display() const
+// displays the type of action it is, along with the item that was acted on
+// displayCommandType
+void Return::displayCommandType() const
 {
     cout << "Return    ";
     currentItem->individualPrint();

@@ -172,7 +172,8 @@ bool BinTree::insert(Item *dataptr)
    {
       if (*newNode->data == *current->data)
       {
-         // If the data is already in the tree, delete the new node and return false
+         // If the data is already in the tree, delete the new node and return
+         // false
          delete newNode;
          newNode = nullptr;
          cout << "Item already exists in library." << endl;
@@ -182,7 +183,8 @@ bool BinTree::insert(Item *dataptr)
       {
          if (current->left == nullptr)
          {
-            // If the left child of the current node is null, insert the new node here
+            // If the left child of the current node is null, insert the new
+            // node here
             current->left = newNode;
             return true;
          }
@@ -195,7 +197,8 @@ bool BinTree::insert(Item *dataptr)
       {
          if (current->right == nullptr)
          {
-            // If the right child of the current node is null, insert the new node here
+            // If the right child of the current node is null, insert the new
+            // node here
             current->right = newNode;
             return true;
          }

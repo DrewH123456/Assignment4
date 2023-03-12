@@ -1,8 +1,5 @@
-/*
- * The Periodical class represents a periodical item in the library system.
- * It inherits from the Book class and includes additional data members specific
- * to periodicals, such as the year, month, and title.
- */
+// A Periodical is a book that the library can lend
+// Drew Higginbotham
 
 #include "periodical.h"
 #include <iomanip>
@@ -16,6 +13,9 @@ Periodical::Periodical()
     itemType = 'P';
 }
 
+//---------------------------------------------------------------------------
+// ~Periodical
+// Destructor
 Periodical::~Periodical()
 {
 }
@@ -30,7 +30,7 @@ int Periodical::countAvailable() const
 
 //---------------------------------------------------------------------------
 // returnItemType
-// Returns item type for given item
+// Returns item type for given item, 'P'
 char Periodical::returnItemType() const
 {
     return itemType;
@@ -38,7 +38,8 @@ char Periodical::returnItemType() const
 
 //---------------------------------------------------------------------------
 // checkOut
-// Checks out this book for a given user in a given library
+// Checks out this book for a given user in a given library, first checking
+// if available, then updating count, otherwise printing error message
 bool Periodical::checkOut()
 {
     if (available > 0)
@@ -60,7 +61,7 @@ void Periodical::returnItem()
 
 //---------------------------------------------------------------------------
 // create
-// Allows item factory to create a periodical object
+// Allows item factory to create an Item pointer to a periodical object
 Item *Periodical::create() const
 {
     return new Periodical();
@@ -68,7 +69,7 @@ Item *Periodical::create() const
 
 //---------------------------------------------------------------------------
 // setData
-// sets item's data using info from line in infile
+// sets item's data using info from line in infile from data4books.txt
 void Periodical::setData(ifstream &inputFile)
 {
     inputFile.get();
@@ -90,7 +91,7 @@ void Periodical::setDataCommand(ifstream &inputFile)
 
 //---------------------------------------------------------------------------
 // print
-// prints book's description
+// prints book's description: available, month, year, title
 void Periodical::print(ostream &out) const
 {
     const Periodical &periodical = static_cast<const Periodical &>(*this);
@@ -102,7 +103,7 @@ void Periodical::print(ostream &out) const
 
 //---------------------------------------------------------------------------
 // individualPrint
-// prints individual book's description
+// prints individual book's description: month, year, title
 void Periodical::individualPrint() const
 {
     const Periodical &periodical = static_cast<const Periodical &>(*this);
@@ -112,6 +113,8 @@ void Periodical::individualPrint() const
     cout << endl;
 }
 
+// printHeading
+// prints heading for individual book description: month, year, title
 void Periodical::printHeading() const
 {
     cout << "Periodical:" << endl;
@@ -123,7 +126,7 @@ void Periodical::printHeading() const
 
 //---------------------------------------------------------------------------
 // operators
-// Overloaded comparison operators
+// Overloaded comparison operators, comparing year, then month, then title
 bool Periodical::operator==(const Item &other) const
 {
     const Periodical &otherPeriodical =

@@ -1,17 +1,13 @@
 // Hashtable is a container that hashes and stores patron pointers
 // Drew Higginbotham
 
-/*
- * This is a class that stores all of the users into a hash table
- * Hash Table is array of Patron pointers with one index for max num of possible
- * users. Deals with duplicates and has no collision
- */
-
 #include "hashtable.h"
 #include "patron.h"
 #include <iostream>
 using namespace std;
 
+//---------------------------------------------------------------------------
+// ~HashTable
 // Destructor, deletes all elements in patronTable that are not nullptr
 HashTable::~HashTable()
 {
@@ -24,6 +20,8 @@ HashTable::~HashTable()
     }
 }
 
+//---------------------------------------------------------------------------
+// insert
 // takes id and adds patron to patronTable[] if id 0-9999 and if not
 // a duplicate
 bool HashTable::insert(int id, Patron *patron)
@@ -47,6 +45,8 @@ bool HashTable::insert(int id, Patron *patron)
     return true;
 }
 
+//---------------------------------------------------------------------------
+// display
 // displays the patron's information as well as their history
 // only used to troubleshoot
 void HashTable::display() const
@@ -62,6 +62,8 @@ void HashTable::display() const
     }
 }
 
+//---------------------------------------------------------------------------
+// retrieveUser
 // with a given id, retrieves a patron that belongs to the index of
 // patronTable, aka owns that id
 Patron *HashTable::retrieveUser(int id) const

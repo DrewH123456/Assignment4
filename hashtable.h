@@ -1,6 +1,11 @@
 // Hashtable is a container that hashes and stores patron pointers
 // Drew Higginbotham
 
+#ifndef HASHTABLE_H
+#define HASHTABLE_H
+#include <vector>
+using namespace std;
+
 /*
  * HashTable: The HashTable class is a hashtable that stores Patron pointers
  * This class provides methods for inserting, displaying a given patron, and
@@ -16,12 +21,6 @@
  *   --Deals with duplicates by deleting patron and not allowing it to be
  *   inserted
  */
-
-#ifndef HASHTABLE_H
-#define HASHTABLE_H
-
-#include <vector>
-using namespace std;
 
 class Patron;
 

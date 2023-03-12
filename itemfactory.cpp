@@ -12,6 +12,11 @@
 #include <iostream>
 using namespace std;
 
+//---------------------------------------------------------------------------
+// ItemFactory
+// Constructs ItemFactory, and its objFactory array. Each item child
+// object being inserted lines up with the numerical version of that letter,
+// with 'C' for "Children" starting at 2 for example.
 ItemFactory::ItemFactory()
 {
     for (int i = 0; i < 26; i++)
@@ -22,6 +27,9 @@ ItemFactory::ItemFactory()
     objFactory[5] = new Fiction();
     objFactory[15] = new Periodical();
 }
+
+//---------------------------------------------------------------------------
+// ~ItemFactory
 ItemFactory::~ItemFactory()
 {
     {
@@ -36,6 +44,8 @@ ItemFactory::~ItemFactory()
     }
 }
 
+//---------------------------------------------------------------------------
+// createIt
 Item *ItemFactory::createIt(char ch) const
 {
     int subscript = hash(ch); // would do error checking
@@ -46,6 +56,10 @@ Item *ItemFactory::createIt(char ch) const
     return objFactory[subscript]->create();
 }
 
+//---------------------------------------------------------------------------
+// hash
+// hashes letter into index by subtracting 'A'. Error checks if
+// letter in 'A-Z' range
 int ItemFactory::hash(char ch) const
 {
     if (ch != 'C' && ch != 'F' && ch != 'P')

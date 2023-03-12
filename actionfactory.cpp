@@ -64,7 +64,7 @@ Action *ActionFactory::createIt(char ch) const
 
 //----------------------------------------------------------------------------
 // hash()
-// translates letter into index by subtracting 'A'. Error checks if
+// hashes letter into index by subtracting 'A'. Error checks if
 // letter in 'A-Z' range
 int ActionFactory::hash(char ch) const
 {
