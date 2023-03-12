@@ -1,25 +1,30 @@
-/**
- * The Item class represents a collection of a given item in the library system.
- * It contains information about the number of checked out/available items
- * The Item class serves as the parent class for Book.
- */
+// A Book is a parent class whose children are items the library lends
+// Drew Higginbotham
 
 #ifndef ITEM_H
 #define ITEM_H
-
 #include <string>
 #include <iostream>
 #include <fstream>
-
 using namespace std;
+
+/*
+ * Item: The Item class is an abstract class whose children include Book.
+ * It has minimal implementation, besides data members: available and itemType
+ *
+ * Implementation and Assumptions:
+ *   --All functions must be implemented by children
+ *   --Contains a virtual destructor
+ */
 
 class Item
 {
 protected:
     int available; // available item count
-    char itemType; // object type, represented by char
+    char itemType; // item type, represented by char
 
 public:
+    // Constructor
     Item(){};
 
     // Destructor

@@ -1,4 +1,4 @@
-// A BinTree contains nodes, which contain Item * pointers
+// A BinTree contains Nodes, which contain Item * pointers
 // Drew Higginbotham
 
 #ifndef BINTREE_H
@@ -7,7 +7,7 @@
 #include <string>
 using namespace std;
 
-// BinTree: The BinTree class is a binary search tree that stores Node objects,
+// BinTree: The BinTree class is a binary search tree that stores Node pointers,
 // which contain Item * pointers. This class provides methods for inserting,
 // retrieving Nodes and printing Items stored within the Nodes.
 // The class also provides methods for checking if the tree is empty, and
@@ -58,17 +58,18 @@ private:
     };
     Node *root; // root of the tree
 
+    // utility functions:
+    // retrieve helper method
     bool retrieveHelper(const Node *current, const Item &target,
                         Item *&foundItem) const;
 
-    // utility functions
-    // printBSTree helper
+    // printBSTree helper method
     void printBSTreeHelper(Node *current) const;
 
     // makeEmpty helper method
     void makeEmptyHelper(Node *&);
+
     // isEmpty helper method
     bool isEqual(Node *, Node *) const;
-    // bstreeToArray Helper
 };
 #endif

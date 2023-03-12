@@ -1,4 +1,4 @@
-// An Action is a parent class whose children are actions the library executes
+// An Action is a parent class whose children are actions executed in library
 // Drew Higginbotham
 
 #ifndef ACTION_H
@@ -9,7 +9,7 @@
 #include "library.h"
 
 /*
- * Action: The Action class is an abstract class that the library must perform.
+ * Action: The Action class is an abstract class that stores a child action.
  * Its children include checkout, return, display, and history. All of
  * its functions, such as execute, setData, create, and display are pure
  * virtual
@@ -34,11 +34,11 @@ public:
     // Assigns the action's data members based on given text file
     virtual bool setData(ifstream &inputFile, ItemFactory *itemFac) = 0;
 
-    // Creates an instance of this specific action and returns it
+    // creates and returns an action pointer to an object of the checkOut class
     virtual Action *create() const = 0;
 
     // Displays the given action and its stored data members
-    virtual void display() const = 0;
+    virtual void displayCommandType() const = 0;
 };
 
 #endif

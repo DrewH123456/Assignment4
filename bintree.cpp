@@ -1,4 +1,4 @@
-// A BinTree contains nodes, which contain Item * pointers
+// A BinTree contains Nodes, which contain Item * pointers
 // Drew Higginbotham
 
 #include "bintree.h"
@@ -8,7 +8,6 @@
 //----------------------------------------------------------------
 // printBSTree
 // prints out bstree in order
-//----------------------------------------------------------------
 void BinTree::printBSTree() const
 {
    if (root != nullptr)
@@ -21,7 +20,6 @@ void BinTree::printBSTree() const
 //----------------------------------------------------------------
 // printBSTreeHelper
 // helper for printBSTree, recursively prints out tree
-//----------------------------------------------------------------
 void BinTree::printBSTreeHelper(Node *current) const
 {
    if (current != nullptr)
@@ -36,14 +34,12 @@ void BinTree::printBSTreeHelper(Node *current) const
 //----------------------------------------------------------------
 // Constructor
 //  initializes the root of the tree to be nullptr.
-//----------------------------------------------------------------
 BinTree::BinTree() : root(nullptr) {}
 
 //----------------------------------------------------------------
 // helper methods for destructor methods
 // It recursively deletes the elements of the tree
 // and deallocates the memory
-//----------------------------------------------------------------
 void BinTree::makeEmptyHelper(Node *&current)
 {
    if (current != nullptr)
@@ -60,7 +56,6 @@ void BinTree::makeEmptyHelper(Node *&current)
 //----------------------------------------------------------------
 // ~BinTree()
 // Destructor method use the makeEmptyHelper to delete the tree
-//----------------------------------------------------------------
 BinTree::~BinTree()
 {
    makeEmpty();
@@ -71,7 +66,6 @@ BinTree::~BinTree()
 //  helper method for the makeEmpty method.
 // recursively deletes the elements of the tree
 // and frees the memory associated with them.
-//----------------------------------------------------------------
 void BinTree::makeEmpty()
 {
    makeEmptyHelper(root);
@@ -81,7 +75,6 @@ void BinTree::makeEmpty()
 // isEmpty()
 // checks whether the tree is empty or true
 // returns true if the tree is empty
-//----------------------------------------------------------------
 bool BinTree::isEmpty() const
 {
    return (root == nullptr);
@@ -123,7 +116,6 @@ bool BinTree::retrieveHelper(const Node *current, const Item &target,
 // operator ==
 // compares two trees, returning true if they are the same
 // otherwise returns false
-//----------------------------------------------------------------
 bool BinTree::operator==(const BinTree &other) const
 {
    return isEqual(root, other.root);
@@ -134,7 +126,6 @@ bool BinTree::operator==(const BinTree &other) const
 // operator == helper method
 // recursively compares the nodes in the tree
 // returns true if they are the same otherwise returns false
-//----------------------------------------------------------------
 bool BinTree::isEqual(Node *a, Node *b) const
 {
    if (a == nullptr && b == nullptr)
@@ -150,12 +141,12 @@ bool BinTree::isEqual(Node *a, Node *b) const
 // operator !=()
 // check if the two trees are not equal
 // returns true if they are not the same otherwise returns false
-//----------------------------------------------------------------
 bool BinTree::operator!=(const BinTree &other) const
 {
    return !(*this == other);
 }
 
+// inserts a new Node into the tree, unlesss it already exists in tree
 bool BinTree::insert(Item *dataptr)
 {
    // Create a new node with the given data pointer

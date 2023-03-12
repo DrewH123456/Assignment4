@@ -1,3 +1,6 @@
+// A ChildrenBook is a book that the library can lend
+// Drew Higginbotham
+
 /*
  * The ChildrenBook class represents a children book item in the library system.
  * It inherits from the Book class and includes additional data members specific
@@ -31,7 +34,7 @@ int ChildrenBook::countAvailable() const
 
 //---------------------------------------------------------------------------
 // returnItemType
-// Returns item type for given item
+// Returns item type for given item, 'C'
 char ChildrenBook::returnItemType() const
 {
     return itemType;
@@ -39,7 +42,8 @@ char ChildrenBook::returnItemType() const
 
 //---------------------------------------------------------------------------
 // checkOut
-// Checks out this book for a given user in a given library
+// Checks out this book for a given user in a given library, first checking
+// if available, then updating count, otherwise printing error message
 bool ChildrenBook::checkOut()
 {
     if (available > 0)
@@ -69,7 +73,7 @@ Item *ChildrenBook::create() const
 
 //---------------------------------------------------------------------------
 // setData
-// sets item's data using info from line in infile
+// sets item's data using info from line in infile from data4books.txt
 void ChildrenBook::setData(ifstream &inputFile)
 {
     inputFile.get();
@@ -90,6 +94,9 @@ void ChildrenBook::setDataCommand(ifstream &inputFile)
     getline(inputFile, authorName, ',');
 }
 
+//---------------------------------------------------------------------------
+// print
+// prints book's description: available, author, title, year
 void ChildrenBook::print(ostream &out) const
 {
     const ChildrenBook &children = static_cast<const ChildrenBook &>(*this);
@@ -101,7 +108,7 @@ void ChildrenBook::print(ostream &out) const
 
 //---------------------------------------------------------------------------
 // individualPrint
-// prints individual book's description
+// prints individual book's description: title, author, year
 void ChildrenBook::individualPrint() const
 {
     const ChildrenBook &children = static_cast<const ChildrenBook &>(*this);
@@ -110,6 +117,9 @@ void ChildrenBook::individualPrint() const
     cout << endl;
 }
 
+//---------------------------------------------------------------------------
+// printHeading
+// prints heading for individual book description: title, author, year
 void ChildrenBook::printHeading() const
 {
     cout << "Children" << endl;
@@ -121,7 +131,7 @@ void ChildrenBook::printHeading() const
 
 //---------------------------------------------------------------------------
 // operator
-// Overloaded comparison operators
+// Overloaded comparison operators, comparing author and title
 bool ChildrenBook::operator==(const Item &other) const
 {
     const ChildrenBook &otherChildrenBook =

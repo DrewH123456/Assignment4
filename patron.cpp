@@ -88,7 +88,8 @@ void Patron::viewHistory() const
 {
     if (history.size() == 0)
     {
-        cout << "Patron has no history of transactions" << endl;
+        cout << "Patron " << idNumber << " has no history of transactions"
+             << endl;
     }
     else
     {

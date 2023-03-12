@@ -1,12 +1,22 @@
-/*
- * This is a child class of action, overriding the execute function to check
- * out a book for a user
- */
+// A Checkout allows a patron to borrow an item
+// Drew Higginbotham
 
 #ifndef CHECKOUT_H
 #define CHECKOUT_H
-
 #include "action.h"
+
+/*
+ * Checkout: The Checkout class is a child class of Action and
+ * is executed by the library, allowing a given patron to borrow an item.
+ * Overrides all pure virtual functions from Action, such as create, setData,
+ * execute, and display
+ *
+ * Implementation and Assumptions:
+ *   --contains members: currentID, tempItem, currentItem, which
+ *   allow execute to perform actions on desired item or patrons
+ *   --validates that item is able to be checked out or that patrons or item
+ *   exist in library
+ */
 
 class Library;
 class ItemFactory;
@@ -19,22 +29,26 @@ protected:
     Item *currentItem = nullptr; // item retrieved from library's bintree
 
 public:
-    // Constructor
+    // constructor
     CheckOut(){};
 
-    // Destructor
+    // virtual destructor
     virtual ~CheckOut(){};
 
-    // creates an action pointer to an object of the checkOut class
+    // allows actionFactory to create action pointer to checkOut object
     virtual Action *create() const;
 
+    // reads in data from data4commands.txt and assigns data members accordingly
+    // error checks, returning false if invalid data
     virtual bool setData(ifstream &inputFile, ItemFactory *itemFac);
 
-    // checks out a given book for a given user
+    // checks out a given item for a given user
+    // Retrieves the patron and item being acted on from item and user container
+    // Performs action on patron and item, and logs patron's history of commands
     virtual bool execute(Library *library);
 
-    // displays the type of action it is
-    virtual void display() const;
+    // displays the type of action it is, along with the item that was acted on
+    virtual void displayCommandType() const;
 };
 
 #endif

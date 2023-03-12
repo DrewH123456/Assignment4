@@ -1,16 +1,21 @@
-/*
- * This is a child class of action, overriding the execute function to check
- * out a book for a user
- */
+// A Checkout allows a patron to borrow an item
+// Drew Higginbotham
 
 #include "checkout.h"
 #include "itemfactory.h"
 
+//----------------------------------------------------------------------------
+// create
+// allows action factory to create action pointer to checkOut object
 Action *CheckOut::create() const
 {
     return new CheckOut();
 }
 
+//----------------------------------------------------------------------------
+// setData
+// reads in data from data4commands.txt and assigns data members accordingly
+// error checks, returning false if invalid data
 bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
 {
     char itemType;  // takes in item type
@@ -37,7 +42,12 @@ bool CheckOut::setData(ifstream &inputFile, ItemFactory *itemFac)
     return true;
 }
 
-bool CheckOut::execute(Library *library) // delete command if no success
+//----------------------------------------------------------------------------
+// execute
+// checks out a given item for a given user
+// Retrieves the patron and item being acted on from item and user container
+// Performs action on patron and item, and logs patron's history of commands
+bool CheckOut::execute(Library *library)
 {
     // uses currentID to assign patron item to matching patron found in h-table
     Patron *retrievedPatron = library->retrieveUser(currentID);
@@ -45,6 +55,7 @@ bool CheckOut::execute(Library *library) // delete command if no success
     currentItem = library->retrieveItem(tempItem);
     delete tempItem;
     tempItem = nullptr;
+    // if item and patron exist in respective containers
     if (retrievedPatron == nullptr || currentItem == nullptr)
     {
         return false;
@@ -58,7 +69,10 @@ bool CheckOut::execute(Library *library) // delete command if no success
     return true;
 }
 
-void CheckOut::display() const
+//----------------------------------------------------------------------------
+// display
+// displays the type of action it is, along with the item that was acted on
+void CheckOut::displayCommandType() const
 {
     cout << "Checkout  ";
     currentItem->individualPrint();

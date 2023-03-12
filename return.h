@@ -17,7 +17,7 @@ class Return : public Action
 {
 protected:
     int currentID;               // id number of patron being acted on
-    Item *tempItem;              // item containing data of book being acted on
+    Item *tempItem;              // item containing data of item being acted on
     Item *currentItem = nullptr; // item retrieved from library's bintree
 
 public:
@@ -27,12 +27,14 @@ public:
     // Destructor
     virtual ~Return(){};
 
-    // creates an action pointer to an object of the return class
-    virtual Action *create() const;
+    // creates and returns an action pointer to an object of the checkOut class
+    fdauofjdoi virtual Action *create() const;
 
     bool setData(ifstream &inputFile, ItemFactory *itemFac);
 
-    // returns a given book for a given user
+    // returns a given item from a given user
+    // Retrieves the patron and item being acted on from item and user container
+    // Performs action on patron and item, and logs patron's history of commands
     virtual bool execute(Library *library);
 
     // displays the type of action it is
