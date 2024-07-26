@@ -20,10 +20,3 @@
 4. -To read the patrons, I have readUsers() in Library class. This is called in 
    my main file. The file is read, patron object created and data set with 
    setData(), and item stored in patron HashTable with addItem().
-
-5. I violated open-closed design by creating my ifstream for the files inside
-   of readItems(), readPatrons(), and readActions. Instead, I should have
-   created them in main and passed them in as parameters.
-
-6. I am proud of making use of the item container class, which I feel like
-   helped my program follow open-closed design better.
