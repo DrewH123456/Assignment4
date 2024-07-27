@@ -9,7 +9,7 @@
 #include <fstream>
 
 /*
- * ChildrenBook: The ChildrenBook class is a child class of Item and Book
+ * ChildrenBook: The ChildrenBook class is a child class of Item and Book 
  * Overrides all pure virtual functions from Book, such as checkOut, returnItem,
  * setData, and print
  *
