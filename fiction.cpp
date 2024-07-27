@@ -4,7 +4,7 @@
  * to periodicals, such as the date issues and title.
  */
 
-#include "fiction.h"
+#include "fiction.h" 
 #include <iomanip>
 using namespace std;
 
