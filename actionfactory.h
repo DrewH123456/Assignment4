@@ -5,7 +5,7 @@
 #define ACTIONFACTORY_H
 
 /*
- * ActionFactory: The ActionFactory class creates and returns instances of
+ * ActionFactory: The ActionFactory class creates and returns instances of 
  * children actions, checkout, return, display, and history, given a single
  * character. This allows for the action to be executed when the action is
  * processed.
