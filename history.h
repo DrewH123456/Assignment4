@@ -18,7 +18,7 @@
  *   --setData reads in the id and always returns true, allowing
  *   readActions from library to continue executing the action
  *   --execute always returns false so readData can delete the display object
- *   --displayCommandType function not actually used in program
+ *   --displayCommandType function not actually used in program 
  */
 
 class ItemFactory;
