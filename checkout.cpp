@@ -3,7 +3,7 @@
 
 #include "checkout.h"
 #include "itemfactory.h"
-
+ 
 //----------------------------------------------------------------------------
 // create
 // allows action factory to create action pointer to checkOut object
