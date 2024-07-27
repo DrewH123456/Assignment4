@@ -1,5 +1,5 @@
 // A Display prints out all of the items in the library in sorted order
-// Drew Higginbotham
+// Drew Higginbotham 
 
 #include "display.h"
 #include "itemfactory.h"
