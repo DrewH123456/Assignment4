@@ -8,7 +8,7 @@
 //----------------------------------------------------------------
 // printBSTree
 // prints out bstree in order
-void BinTree::printBSTree() const
+void BinTree::printBSTree() const 
 {
    if (root != nullptr)
    {
