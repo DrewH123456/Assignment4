@@ -7,7 +7,7 @@
 using namespace std;
 
 /*
- * Book: The Book class is an abstract class whose children include checkout,
+ * Book: The Book class is an abstract class whose children include checkout, 
  * return, display, and history. Its parent class is Item, and all of the
  * functions passed down from Item remain pure virtual within Book class
  *
