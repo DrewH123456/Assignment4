@@ -4,7 +4,7 @@
 #ifndef CHECKOUT_H
 #define CHECKOUT_H
 #include "action.h"
-
+ 
 /*
  * Checkout: The Checkout class is a child class of Action and
  * is executed by the library, allowing a given patron to borrow an item.
