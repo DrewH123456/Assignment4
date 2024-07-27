@@ -6,7 +6,7 @@
 
 //----------------------------------------------------------------------------
 // create
-// allows actionFactory to create Action pointer to History object
+// allows actionFactory to create Action pointer to History object 
 Action *History::create() const
 {
     return new History();
