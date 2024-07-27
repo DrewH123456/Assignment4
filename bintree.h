@@ -5,7 +5,7 @@
 #define BINTREE_H
 #include <iostream>
 #include <string>
-using namespace std;
+using namespace std; 
 
 // BinTree: The BinTree class is a binary search tree that stores Node pointers,
 // which contain Item * pointers. This class provides methods for inserting,
