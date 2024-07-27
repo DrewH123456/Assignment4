@@ -1,4 +1,4 @@
-// Display prints out all of the items in the library in sorted order
+// Display prints out all of the items in the library in sorted order 
 // Drew Higginbotham
 
 #ifndef DISPLAY_H
