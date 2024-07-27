@@ -9,7 +9,7 @@
 #include <fstream>
 
 /*
- * Fiction: The Fiction class is a child class of Item and Book
+ * Fiction: The Fiction class is a child class of Item and Book 
  * Overrides all pure virtual functions from Book, such as checkOut, returnItem,
  * setData, and print
  *
