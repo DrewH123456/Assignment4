@@ -9,7 +9,7 @@
 #include "library.h"
 
 /*
- * Action: The Action class is an abstract class that stores a child action.
+ * Action: The Action class is an abstract class that stores a child action. 
  * Its children include checkout, return, display, and history. All of
  * its functions, such as execute, setData, create, and display are pure
  * virtual
